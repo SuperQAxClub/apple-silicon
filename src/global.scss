@@ -1,0 +1,953 @@
+@use 'sass:list';
+@use 'sass:math';
+//---Screen size
+$media-list: 'desktop' 'screen and (min-width: 1000px)',
+            'ultrawide' 'screen and (min-width: 2500px)',
+            'highres' 'screen and (min-width: 1700px)',
+            'fullhd' 'screen and (max-width: 2000px)',
+            'ipadpro129' 'screen and (max-width: 1700px)',
+            'ipadpro11-landscape' 'screen and (max-width: 1200px)',
+            'ipadpro11-portrait' 'screen and (max-width: 1000px)',
+            'ipad97-landscape' 'screen and (max-width: 1024px)',
+            'ipad97-portrait' 'screen and (max-width: 800px)',
+            'tablet' 'screen and (min-width: 700px)',
+            'iphone12promax' 'screen and (max-width: 599px)',
+            'iphone12mini' 'screen and (max-width: 400px)',
+            'iphonese' 'screen and (max-width: 320px)',
+            'iphonelandscape' 'screen and (max-height: 500px)',
+            'iphonese-landscape' 'screen and (max-height: 350px)',
+            'darkmode' '(prefers-color-scheme: dark)',
+            'reduce-motion' '(prefers-reduced-motion: reduce)';
+@mixin media($type) {
+  @each $media in $media-list {
+    @if(nth($media,1) == $type) {
+      @media #{nth($media,2)} {
+        @content;
+      }
+    }
+  }
+}
+@function number($value) {
+  $result: 0;
+  $digits: 0;
+  $minus: str-slice($value, 1, 1) == '-';
+  $numbers: ('0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9);
+  
+  @for $i from if($minus, 2, 1) through str-length($value) {
+    $character: str-slice($value, $i, $i);
+    
+    @if not (index(map-keys($numbers), $character) or $character == '.') {
+      @return to-length(if($minus, -$result, $result), str-slice($value, $i))
+    }
+    
+    @if $character == '.' {
+      $digits: 1; 
+    } @else if $digits == 0 {
+      $result: $result * 10 + map-get($numbers, $character);  
+    } @else {
+      $digits: $digits * 10;
+      $result: $result + map-get($numbers, $character) / $digits;
+    }
+  }
+  
+  @return if($minus, -$result, $result);
+}
+//---General variables
+$font-sf: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$transition-ps: 0.3s cubic-bezier(.15,.51,.3,1);
+$transition-content: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+$transition-login-bar: 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+$safe-left: env(safe-area-inset-left);
+$safe-right: env(safe-area-inset-right);
+$safe-bottom: env(safe-area-inset-bottom);
+$sidebarWidth: calc(#{$safe-left} + 260px);
+$navbarHeight: 50px;
+$radius: 10px;
+//-Color
+$color-list: 'blue' #1488cc 20 136 204,
+             'darkblue' #002c6d 0 44 109,
+             'lightblue' #12D8FA 18 216 250,
+             'red' #e0393f 244 57 63,
+             'darkred' #6b0b50 107 11 80,
+             'pink' #ff0f9b 255 15 155,
+             'yellow' #ffcc4d 255 204 77,
+             'purple' #7f00ff 127 0 255,
+             'green' #339969 51 153 105,
+             'orange' #f39e00 255 166 0;
+
+@each $color in $color-list {
+  .#{nth($color,1)}-color {
+    background: #{nth($color,2)}!important;
+  }
+  .#{nth($color,1)}-text {
+    color: #{nth($color,2)}!important;
+  }
+}
+$grad-list: 
+  'blue' 220 89% 50% 30% 20%,
+;
+@each $grad in $grad-list {
+  $dark: 30;
+  .grad-#{nth($grad,1)} {
+    .ps4-background {
+      background: linear-gradient(to bottom, hsl(list.nth($grad,2),list.nth($grad,3),list.nth($grad,4)), hsl(list.nth($grad,2),list.nth($grad,3),list.nth($grad,5)));
+    }
+    .ps4-dashboard {
+      .dashboard-container {
+        .app-bar {
+          .app-item {
+            .item-icon {
+              background: linear-gradient(to bottom, hsl(list.nth($grad,2),list.nth($grad,3),list.nth($grad,5)), hsl(list.nth($grad,2),list.nth($grad,3),list.nth($grad,6)));
+            }
+          }
+        }
+      }
+    }
+  }
+}
+//Live color
+:root {
+  //Color
+  @each $color in $color-list {
+    --static-#{nth($color,1)}: #{nth($color,2)};
+    --#{nth($color,1)}: #{nth($color,2)};
+  }
+  //General
+  --box-05: rgba(256,256,256,0.5);
+  --border-color: #b9b9b9;
+  --text-color: #000;
+}
+//---Premade
+@mixin center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+@mixin center-transform {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+@mixin center-grid() {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+@mixin ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+@mixin ellipsis2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+@mixin flex-center {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+@mixin flex-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+@mixin double-click-fix {
+  -webkit-user-select: none;     
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+@mixin removeul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+@mixin shadow {
+  filter: drop-shadow(0px 0px 6px rgba(0,0,0,1));
+}
+@mixin removeshadow {
+    -webkit-box-shadow: none!important;
+    -moz-box-shadow: none!important;
+    box-shadow: none!important;
+}
+@mixin removeblur {
+  -webkit-backdrop-filter: none!important;
+  backdrop-filter: none!important;
+}
+@mixin center-bg {
+  background-position: center;
+  background-size: cover;
+}
+@mixin gradient-text {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+@mixin text-shadow {
+  text-shadow: 0px 0px 4px #000;
+}
+@mixin fixed-all-screen {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+//Mixin value
+@mixin backdrop-blur($blur) {
+    -webkit-backdrop-filter: blur($blur);
+    backdrop-filter: blur($blur);
+}
+//Keyframe
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes glowText {
+  0% {
+    text-shadow: 0 0 10px rgba(256,256,256,0.1),0 0 10px rgba(256,256,256,0.1),0 0 10px rgba(256,256,256,0.1);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(256,256,256,0.7),0 0 10px rgba(256,256,256,0.7),0 0 10px rgba(256,256,256,0.7);
+  }
+  100% {
+    text-shadow: 0 0 10px rgba(256,256,256,0.1),0 0 10px rgba(256,256,256,0.1),0 0 10px rgba(256,256,256,0.1);
+  }
+}
+@keyframes barBack {
+  0% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(-5px);
+  }
+}
+@keyframes mainWave {
+  0% {
+    transform: translateX(-300vw);
+  }
+  100% {
+    transform: translateX(0vw);
+  }
+}
+//Main
+* { -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+body {
+    font-family: $font-sf;
+    margin: 0;
+    line-height: 1.5;
+    &.disable-hover {
+      pointer-events: none;
+    }
+}
+a {
+  text-decoration: none;
+}
+.mobile-hide {
+    @include media(iphone12promax) {
+      display: none!important;
+    }
+}
+.tablet-hide {
+    @include media(tablet) {
+        display: none!important;
+    }
+}
+.desktop-hide {
+    @include media(desktop) {
+        display: none!important;
+    }
+}
+.hide-all {
+  display: none!important;
+}
+.pos-rel {
+  position: relative;
+}
+input, select {
+  -webkit-appearance: none;
+  font-family: $font-sf!important;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus,
+a {
+  outline: none;
+}
+a {
+  cursor: pointer;
+}
+a:hover {
+  text-decoration: none;
+}
+button {
+  font-family: $font-sf!important;
+  border: none;
+  background: transparent;
+}
+input[type="date"] {
+  display: block;
+  text-align: left;
+}
+//Grid
+.collab-row {
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 -7.5px;
+    &.row100-fix {
+      width: 100%;
+    }
+}
+.no-gap {
+  margin-right: 0px;
+  margin-left: 0px;
+  > [class*="row-"] {
+    padding: 0;
+  }
+}
+.disable-click {
+  pointer-events: none!important;
+}
+@mixin generateRow($name) {
+    $i: 5;
+    $row: row;
+    @if $name != no {
+        $row: row-#{$name};
+    } @else {
+        $row: row;
+    }
+    .#{$row}-16 {
+        box-sizing: border-box;
+        flex: 0 0 auto;
+        padding: 0 7.5px;
+        flex-basis: percentage(math.div(math.div(100,6),100));
+        max-width: percentage(math.div(math.div(100,6),100));
+        position: relative;
+    }
+    .#{$row}-33 {
+        box-sizing: border-box;
+        flex: 0 0 auto;
+        padding: 0 7.5px;
+        flex-basis: percentage(math.div(math.div(100,3),100));
+        max-width: percentage(math.div(math.div(100,3),100));
+        position: relative;
+    }
+    @while $i <= 100 {
+        $percenti: percentage(math.div($i,100));
+        .#{$row}-#{$i} {
+            box-sizing: border-box;
+            flex: 0 0 auto;
+            padding: 0 7.5px;
+            flex-basis: $percenti;
+            max-width: $percenti;
+            position: relative;
+        }
+        $i: $i + 5;
+    }
+}
+@include generateRow(no);
+$grid-list: 'fullhd' 'fullhd' 'screen and (max-width: 2000px)',
+            'ipadpro129' 'hd' 'screen and (max-width: 1700px)',
+            'ipadpro11-landscape' 'ipad-landscape' 'screen and (max-width: 1200px)',
+            'ipadpro11-portrait' 'ipad-portrait' 'screen and (max-width: 1000px)',
+            'iphone12promax' 'iphone' 'screen and (max-width: 599px)',
+            'iphonese' 'iphonese' 'screen and (max-width: 320px)';
+@each $grid in $grid-list {
+  $grid-media: nth($grid,1);
+  $grid-name: nth($grid,2);
+  @include media($grid-media) {
+      @include generateRow($grid-name);
+  }
+}
+
+.chip-bg {
+  --chip-base-color: #fff;
+  background-color: #000;
+  color: var(--chip-base-color);
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  display: grid;
+  place-items: center;
+  .main-container {
+    width: 90vw;
+    max-width: 1000px;
+    container-type: inline-size;
+    .chip-frame {
+      font-size: 6cqw;
+      aspect-ratio: 1/1;
+      border: 0.4em solid transparent;
+    }
+    &.m2 {
+      // --border-separator-width: 0.08em;
+      // --border-item-width: 0.04em;
+      --border-separator-width: 4px;
+      --border-item-width: 1px;
+      @include media(tablet) {
+        --border-separator-width: 4px;
+        --border-item-width: 2px;
+      }
+      background: linear-gradient(135deg, rgba(253,183,46,1) 0%, rgba(247,125,71,1) 25%, rgba(210,60,48,1) 50%, rgba(166,0,157,1) 75%, rgba(113,1,154,1) 100%);
+      .chip-frame {
+        aspect-ratio: 1.11/1;
+        display: flex;
+        gap: var(--border-separator-width);
+        .main-chip-item-left {
+          flex: 0 0 45%;
+          .main-left-container {
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            gap: var(--border-separator-width);
+            .left-name {
+              flex: 0 0 16%;
+              position: relative;
+              .overlay {
+                background-color: #fff;
+                color: #000;
+                mix-blend-mode: lighten;
+                margin: 0;
+                line-height: 1;
+                padding: 0 0.2em;
+                &.dark-bg {
+                  background-color: #000;
+                  color: #fff;
+                  mix-blend-mode: multiply;
+                }
+              }
+              .apple-logo {
+                line-height: 1;
+                font-size: 2.3em;
+                margin-right: 0.05em;
+              }
+              .chip-name {
+                font-size: 1.8em;
+                font-weight: 500;
+              }
+            }
+            .left-item-container {
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              height: 100%;
+              gap: var(--border-separator-width);
+              .item-half {
+                flex: 1;
+                &.flex-container {
+                  display: flex;
+                  flex-direction: column;
+                  height: 100%;
+                  gap: var(--border-separator-width);
+                  .item-half-flex-item {
+                    flex: 1;
+                  }
+                  .item-half-fixed-item {
+                    flex: 0.48;
+                  }
+                }
+                .left-cpu-performance {
+                  height: 100%;
+                  box-sizing: border-box;
+                  display: flex;
+                  gap: var(--border-separator-width);
+                  .cpu-core {
+                    flex: 1;
+                    height: 100%;
+                    display: grid;
+                    grid-template-columns: repeat(9, 1fr);
+                    gap: var(--border-item-width);
+                    > [class*="core-"] {
+                      background-color: var(--chip-base-color);
+                    }
+                    grid-template-columns: 12% repeat(7, auto) 12%;
+                    grid-template-rows: repeat(2, 4%) 4% 2% auto 2% 4% repeat(2, 4%);
+                    .core-1 {
+                      grid-column: 1/10;
+                      grid-row: 1;
+                    }
+                    .core-2 {
+                      grid-column: 1/10;
+                      grid-row: 2;
+                    }
+                    .core-3 {
+                      grid-column: 1;
+                      grid-row: 3/8;
+                    }
+                    .core-4 {
+                      grid-column: 2;
+                      grid-row: 3/8;
+                    }
+                    .core-5 {
+                      grid-column: 3/8;
+                      grid-row: 3;
+                    }
+                    .core-6 {
+                      grid-column: 3/8;
+                      grid-row: 4;
+                    }
+                    .core-7 {
+                      grid-column: 8;
+                      grid-row: 3/8;
+                    }
+                    .core-8 {
+                      grid-column: 9;
+                      grid-row: 3/8;
+                    }
+                    .core-9 {
+                      grid-column: 3;
+                      grid-row: 5;
+                    }
+                    .core-10 {
+                      grid-column: 4;
+                      grid-row: 5;
+                    }
+                    .core-11 {
+                      grid-column: 5;
+                      grid-row: 5;
+                    }
+                    .core-12 {
+                      grid-column: 6;
+                      grid-row: 5;
+                    }
+                    .core-13 {
+                      grid-column: 7;
+                      grid-row: 5;
+                    }
+                    .core-14 {
+                      grid-column: 3/8;
+                      grid-row: 6;
+                    }
+                    .core-15 {
+                      grid-column: 3/8;
+                      grid-row: 7;
+                    }
+                    .core-16 {
+                      grid-column: 1/10;
+                      grid-row: 8;
+                    }
+                    .core-17 {
+                      grid-column: 1/10;
+                      grid-row: 9;
+                    }
+                  }
+                }
+                .left-cpu-efficiency {
+                  height: 100%;
+                  box-sizing: border-box;
+                  display: grid;
+                  gap: var(--border-separator-width);
+                  grid-template-columns: repeat(2, auto);
+                  .cpu-core {
+                    height: 100%;
+                    display: grid;
+                    gap: var(--border-item-width);
+                    grid-template-columns: 1em 0.16em auto auto 0.16em 1em;
+                    grid-template-rows: repeat(2, auto) repeat(3, 6%) repeat(2, auto);
+                    > [class*="core-"] {
+                      background-color: var(--chip-base-color);
+                    }
+                    .core-1 {
+                      grid-column: 1/4;
+                      grid-row: 1;
+                    }
+                    .core-2 {
+                      grid-column: 4/7;
+                      grid-row: 1;
+                    }
+                    .core-3 {
+                      grid-column: 1;
+                      grid-row: 1/3;
+                    }
+                    .core-4 {
+                      grid-column: 2;
+                      grid-row: 2;
+                    }
+                    .core-5 {
+                      grid-column: 3/5;
+                      grid-row: 2/7;
+                    }
+                    .core-6 {
+                      grid-column: 5;
+                      grid-row: 2;
+                    }
+                    .core-7 {
+                      grid-column: 6;
+                      grid-row: 1/3;
+                    }
+                    .core-8 {
+                      grid-column: 1;
+                      grid-row: 3;
+                    }
+                    .core-9 {
+                      grid-column: 2;
+                      grid-row: 3;
+                    }
+                    .core-10 {
+                      grid-column: 5;
+                      grid-row: 3;
+                    }
+                    .core-11 {
+                      grid-column: 6;
+                      grid-row: 3;
+                    }
+                    .core-12 {
+                      grid-column: 1;
+                      grid-row: 4;
+                    }
+                    .core-13 {
+                      grid-column: 2;
+                      grid-row: 4;
+                    }
+                    .core-14 {
+                      grid-column: 5;
+                      grid-row: 4;
+                    }
+                    .core-15 {
+                      grid-column: 6;
+                      grid-row: 4;
+                    }
+                    .core-16 {
+                      grid-column: 1;
+                      grid-row: 5;
+                    }
+                    .core-17 {
+                      grid-column: 2;
+                      grid-row: 5;
+                    }
+                    .core-18 {
+                      grid-column: 5;
+                      grid-row: 5;
+                    }
+                    .core-19 {
+                      grid-column: 6;
+                      grid-row: 5;
+                    }
+                    .core-20 {
+                      grid-column: 1;
+                      grid-row: 6/8;
+                    }
+                    .core-21 {
+                      grid-column: 2;
+                      grid-row: 6;
+                    }
+                    .core-22 {
+                      grid-column: 5;
+                      grid-row: 6;
+                    }
+                    .core-23 {
+                      grid-column: 6;
+                      grid-row: 6/8;
+                    }
+                    .core-24 {
+                      grid-column: 1/4;
+                      grid-row: 7;
+                    }
+                    .core-25 {
+                      grid-column: 4/7;
+                      grid-row: 7;
+                    }
+                  }
+                }
+                .left-neural {
+                  height: 100%;
+                  box-sizing: border-box;
+                  display: grid;
+                  gap: var(--border-separator-width);
+                  grid-template-columns: repeat(8, auto);
+                  .cpu-core {
+                    height: 100%;
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: var(--border-item-width);
+                    > [class*="core-"] {
+                      background-color: var(--chip-base-color);
+                    }
+                    .core-1 {
+                      grid-column: 1;
+                      grid-row: 1;
+                    }
+                    .core-2 {
+                      grid-column: 2/4;
+                      grid-row: 1;
+                    }
+                    .core-3 {
+                      grid-column: 4;
+                      grid-row: 1;
+                    }
+                    .core-4 {
+                      grid-column: 1;
+                      grid-row: 2/7;
+                    }
+                    .core-5 {
+                      grid-column: 4;
+                      grid-row: 2/7;
+                    }
+                    .core-6 {
+                      grid-column: 1;
+                      grid-row: 7;
+                    }
+                    .core-7 {
+                      grid-column: 2/4;
+                      grid-row: 7;
+                    }
+                    .core-8 {
+                      grid-column: 4;
+                      grid-row: 7;
+                    }
+                  }
+                }
+                .left-bottom {
+                  height: 100%;
+                  box-sizing: border-box;
+                  display: grid;
+                  gap: var(--border-separator-width);
+                  grid-template-columns: repeat(2, auto);
+                  .cpu-core {
+                    height: 100%;
+                    display: grid;
+                    grid-template-columns: repeat(12, 1fr);
+                    grid-template-rows: 0.1em auto 0.1em;
+                    gap: var(--border-item-width);
+                    > [class*="core-"] {
+                      background-color: var(--chip-base-color);
+                    }
+                    .core-1 {
+                      grid-column: 1/13;
+                      grid-row: 2;
+                      background-color: transparent;
+                      .core-mid {
+                        height: 100%;
+                        display: grid;
+                        grid-template-columns: 36% 4% auto 4% 36%;
+                        grid-template-rows: 13% 3% 8% auto 8% 3% 13%;
+                        gap: var(--border-item-width);
+                        > [class*="core-mid-"] {
+                          background-color: var(--chip-base-color);
+                        }
+                        .core-mid-1 {
+                          grid-column: 1/6;
+                          grid-row: 1;
+                        }
+                        .core-mid-2 {
+                          grid-column: 1/6;
+                          grid-row: 2;
+                        }
+                        .core-mid-3 {
+                          grid-column: 1;
+                          grid-row: 3/6;
+                        }
+                        .core-mid-4 {
+                          grid-column: 5;
+                          grid-row: 3/6;
+                        }
+                        .core-mid-5 {
+                          grid-column: 2;
+                          grid-row: 3/6;
+                        }
+                        .core-mid-6 {
+                          grid-column: 2/5;
+                          grid-row: 3;
+                        }
+                        .core-mid-7 {
+                          grid-column: 4;
+                          grid-row: 3/6;
+                        }
+                        .core-mid-8 {
+                          grid-column: 2/5;
+                          grid-row: 5;
+                        }
+                        .core-mid-9 {
+                          grid-column: 1/6;
+                          grid-row: 6;
+                        }
+                        .core-mid-10 {
+                          grid-column: 1/6;
+                          grid-row: 7;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        .main-chip-item-right {
+          flex: 1;
+          .main-right-container {
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            gap: var(--border-separator-width);
+            .right-item-1 {
+              flex: 1.3;
+            }
+            .right-item-2 {
+              background-color: #fff;
+              flex: 0.7;
+            }
+            .right-item-3 {
+              flex: 1;
+              display: flex;
+              gap: var(--border-separator-width);
+              .item-3-left {
+                flex: 1;
+              }
+              .item-3-right {
+                flex: 0 0 23%
+              }
+            }
+            .right-gpu {
+              height: 100%;
+              box-sizing: border-box;
+              display: flex;
+              gap: var(--border-separator-width);
+              .core {
+                flex: 1;
+                height: 100%;
+                display: grid;
+                grid-template-columns: 17% repeat(2, auto) 17%;
+                grid-template-rows: auto repeat(2, 2%) 12% 6% repeat(3, 2%) 6% 12% repeat(2, 2%) auto;
+                gap: var(--border-item-width);
+                > [class*="core-"] {
+                  background-color: var(--chip-base-color);
+                }
+                .core-2 {
+                  grid-column: 2/4;
+                  grid-row: 1;
+                }
+                .core-5 {
+                  grid-column: 2/4;
+                  grid-row: 2;
+                }
+                .core-8 {
+                  grid-column: 2/4;
+                  grid-row: 3;
+                }
+                .core-10 {
+                  grid-column: 1/3;
+                  grid-row: 4;
+                }
+                .core-11 {
+                  grid-column: 3/5;
+                  grid-row: 4;
+                }
+                .core-12 {
+                  grid-column: 1;
+                  grid-row: 4/11;
+                }
+                .core-13 {
+                  grid-column: 2/4;
+                  grid-row: 5;
+                }
+                .core-14 {
+                  grid-column: 2/4;
+                  grid-row: 6;
+                }
+                .core-15 {
+                  grid-column: 2/4;
+                  grid-row: 7;
+                }
+                .core-16 {
+                  grid-column: 2/4;
+                  grid-row: 8;
+                }
+                .core-17 {
+                  grid-column: 2/4;
+                  grid-row: 9;
+                }
+                .core-18 {
+                  grid-column: 4;
+                  grid-row: 4/11;
+                }
+                .core-19 {
+                  grid-column: 1/3;
+                  grid-row: 10;
+                }
+                .core-20 {
+                  grid-column: 3/5;
+                  grid-row: 10;
+                }
+                .core-22 {
+                  grid-column: 2/4;
+                  grid-row: 11;
+                }
+                .core-25 {
+                  grid-column: 2/4;
+                  grid-row: 12;
+                }
+                .core-28 {
+                  grid-column: 2/4;
+                  grid-row: 13;
+                }
+              }
+            }
+            .right-neural {
+              height: 100%;
+              box-sizing: border-box;
+              display: grid;
+              grid-template-columns: repeat(8, 1fr);
+              gap: var(--border-separator-width);
+              .core {
+                height: 100%;
+                display: grid;
+                gap: var(--border-item-width);
+                grid-template-columns: 12% 10% auto 10% 12%;
+                grid-template-rows: 15% 10% repeat(4, auto) 10% 15%;
+                > [class*="core-"] {
+                  background-color: var(--chip-base-color);
+                }
+                .core-1 {
+                  grid-column: 1/6;
+                  grid-row: 1;
+                }
+                .core-2 {
+                  grid-column: 1/6;
+                  grid-row: 2;
+                }
+                .core-3 {
+                  grid-column: 1;
+                  grid-row: 3/7;
+                }
+                .core-4 {
+                  grid-column: 2;
+                  grid-row: 3/7;
+                }
+                .core-9 {
+                  grid-column: 4;
+                  grid-row: 3/7;
+                }
+                .core-10 {
+                  grid-column: 5;
+                  grid-row: 3/7;
+                }
+                .core-11 {
+                  grid-column: 1/6;
+                  grid-row: 7;
+                }
+                .core-12 {
+                  grid-column: 1/6;
+                  grid-row: 8;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
