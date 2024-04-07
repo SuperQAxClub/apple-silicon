@@ -1,32 +1,32 @@
 import { FC } from "react";
 
-export const AppleM2:FC = () => {
+export const AppleM2Pro:FC = () => {
 
   const ChipName:FC = () => {
     return (
       <div className="left-name">
         <div className="text">
           <span className="apple-logo"></span>
-          <span className="chip-name">M2</span>
+          <span className="chip-name">M2 PRO</span>
         </div>
       </div>
     )
   }
 
   const CpuPerformance:FC = () => {
-    const coreCount = 4;
+    const coreCount = 8;
     let coreCountArray:string[] = [];
     for (let index = 0; index < coreCount; index++) {
       coreCountArray.push("a");
     }
     const CpuCore:FC = () => {
-      const coreGridCount = 17;
+      const coreGridCount = 13;
       let coreGridCountArray:number[] = [];
       for (let index = 1; index <= coreGridCount; index++) {
         coreGridCountArray.push(index);
       }
       return (
-        <div className="cpu-core">
+        <div className="cpu-core-pro">
           {coreGridCountArray.map((item, index) => (
             <div className={`core-${item}`} key={`cpuPerfCore${index}`}></div>
           ))}
@@ -394,8 +394,8 @@ export const AppleM2:FC = () => {
   }
 
   return (
-    <div className="chip-bg">
-      <div className="main-container m2">
+    <div className="chip-bg dark-bg">
+      <div className="main-container m2pro">
         <div className="chip-frame">
           <div className="chip-item-1">
             <ChipName />
@@ -404,38 +404,25 @@ export const AppleM2:FC = () => {
             <CpuPerformance />
           </div>
           <div className="chip-item-3">
-            <CpuEfficiency />
+
           </div>
           <div className="chip-item-4">
-            <NeuralEngine1 />
+
           </div>
           <div className="chip-item-5">
-            <LeftBottom />
+
           </div>
           <div className="chip-item-6">
-            <Gpu />
+            
           </div>
           <div className="chip-item-7">
-            <div className="item-a-1">
-              <Media1 />
-            </div>
-            <div className="item-a-2">
-              <Media2 />
-            </div>
-            <div className="item-a-3">
-              <Media3 />
-            </div>
-            <div className="item-a-4">
-              <SecureEnclave />
-            </div>
+            
           </div>
           <div className="chip-item-8">
-            <div className="item-a-left">
-              <RightNeural />
-            </div>
-            <div className="item-a-right">
-              <RightBottom />
-            </div>
+            
+          </div>
+          <div className="chip-item-9">
+            
           </div>
         </div>
       </div>
