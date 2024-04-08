@@ -26,7 +26,7 @@ export const AppleM2:FC = () => {
         coreGridCountArray.push(index);
       }
       return (
-        <div className="cpu-core">
+        <div className="core-cpu-performance-m2">
           {coreGridCountArray.map((item, index) => (
             <div className={`core-${item}`} key={`cpuPerfCore${index}`}></div>
           ))}
@@ -55,7 +55,7 @@ export const AppleM2:FC = () => {
         coreGridCountArray.push(index);
       }
       return (
-        <div className="cpu-core">
+        <div className="core-cpu-efficiency-m2">
           {coreGridCountArray.map((item, index) => (
             <div className={`core-${item}`} key={`cpuEffCore${index}`}></div>
           ))}
@@ -84,7 +84,7 @@ export const AppleM2:FC = () => {
         coreGridCountArray.push(index);
       }
       return (
-        <div className="cpu-core">
+        <div className="core-neural-m2-1">
           {coreGridCountArray.map((item, index) => (
             <div className={`core-${item}`} key={`neural1Core${index}`}></div>
           ))}
@@ -118,7 +118,7 @@ export const AppleM2:FC = () => {
         coreMidGridCountArray.push(index);
       }
       return (
-        <div className="cpu-core">
+        <div className="core-bottom-m2-1">
           {coreGridCountArray.map((item, index) => (
             <div className={`core-${item}`} key={`leftBotCore${index}`}>
               {item === 1 ? (
@@ -155,7 +155,7 @@ export const AppleM2:FC = () => {
         coreGridCountArray.push(index);
       }
       return (
-        <div className="core">
+        <div className="core-gpu-m2">
           {coreGridCountArray.map((item, index) => (
             <div className={`core-${item}`} key={`gpuCore${index}`}></div>
           ))}
@@ -171,7 +171,7 @@ export const AppleM2:FC = () => {
     )
   }
 
-  const RightNeural:FC = () => {
+  const NeuralEngine2:FC = () => {
     const coreCount = 16;
     let coreCountArray:string[] = [];
     for (let index = 0; index < coreCount; index++) {
@@ -184,7 +184,7 @@ export const AppleM2:FC = () => {
         coreGridCountArray.push(index);
       }
       return (
-        <div className="core">
+        <div className="core-neural-m2-2">
           {coreGridCountArray.map((item, index) => (
             <div className={`core-${item}`} key={`rightNeuralCore${index}`}></div>
           ))}
@@ -213,7 +213,7 @@ export const AppleM2:FC = () => {
         coreGridCountArray.push(index);
       }
       return (
-        <div className="core">
+        <div className="core-bottom-m2-2">
           {coreGridCountArray.map((item, index) => (
             <div className={`core-${item}`} key={`rightBotCore${index}`}></div>
           ))}
@@ -242,7 +242,7 @@ export const AppleM2:FC = () => {
         coreMidGridCountArray.push(index);
       }
       return (
-        <div className="core">
+        <div className="core-media-m2-1">
           {coreGridCountArray.map((item, index) => (
             <div className={`core-${item}`} key={`media1Core${index}`}>
               {item === 6 ? (
@@ -282,7 +282,7 @@ export const AppleM2:FC = () => {
         coreMidGridCountMidArray.push(index);
       }
       return (
-        <div className="core">
+        <div className="core-media-m2-2">
           {coreGridCountArray.map((item, index) => (
             <div className={`core-${item}`} key={`media2Core${index}`}>
               {item === 1 || item === 3 ? (
@@ -329,7 +329,7 @@ export const AppleM2:FC = () => {
         coreMidGridCountMidArray.push(index);
       }
       return (
-        <div className="core">
+        <div className="core-media-m2-3">
           {coreGridCountArray.map((item, index) => (
             <div className={`core-${item}`} key={`media3Core${index}`}>
               {item === 2 || item === 3 ? (
@@ -371,7 +371,7 @@ export const AppleM2:FC = () => {
         coreMidGridCountArray.push(index);
       }
       return (
-        <div className="core">
+        <div className="core-secure-enclave-m2">
           {coreGridCountArray.map((item, index) => (
             <div className={`core-${item}`} key={`secureCore${index}`}>
               {item === 1 ? (
@@ -431,7 +431,7 @@ export const AppleM2:FC = () => {
           </div>
           <div className="chip-item-8">
             <div className="item-a-left">
-              <RightNeural />
+              <NeuralEngine2 />
             </div>
             <div className="item-a-right">
               <RightBottom />
