@@ -1,6 +1,6 @@
 import { FC, Fragment } from "react";
 
-export const AppleM2Pro:FC = () => {
+export const AppleM2Max:FC = () => {
 
   const ChipName:FC = () => {
     return (
