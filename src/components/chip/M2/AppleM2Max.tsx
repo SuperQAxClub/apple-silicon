@@ -7,7 +7,7 @@ export const AppleM2Max:FC = () => {
       <div className="left-name">
         <div className="text">
           <span className="apple-logo"></span>
-          <span className="chip-name">M2 PRO</span>
+          <span className="chip-name">M2 MAX</span>
         </div>
       </div>
     )
@@ -412,34 +412,43 @@ export const AppleM2Max:FC = () => {
 
   return (
     <div className="chip-bg dark-bg">
-      <div className="main-container m2pro">
+      <div className="main-container m2max">
         <div className="chip-frame">
           <div className="chip-item-1">
             <ChipName />
           </div>
           <div className="chip-item-2">
-            <CpuPerformance />
+
           </div>
           <div className="chip-item-3">
-            <CpuEfficiency />
+
           </div>
           <div className="chip-item-4">
-            <Gpu />
+
           </div>
           <div className="chip-item-5">
-            <NeuralEngine2 />
+
           </div>
           <div className="chip-item-6">
-            <NeuralEngine1 />
+
           </div>
           <div className="chip-item-7">
-            <SecureEnclave />
+
           </div>
           <div className="chip-item-8">
-            <LeftBottom />
+
           </div>
           <div className="chip-item-9">
-            <RightBottom />
+
+          </div>
+          <div className="chip-item-10">
+
+          </div>
+          <div className="chip-item-11">
+
+          </div>
+          <div className="chip-item-12">
+
           </div>
         </div>
       </div>
