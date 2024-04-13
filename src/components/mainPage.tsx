@@ -7,6 +7,7 @@ export const MainPage:FC = () => {
       <br /><a href="#/m2">Apple M2</a>
       <br /><a href="#/m2pro">Apple M2 Pro</a>
       <br /><a href="#/m2max">Apple M2 Max</a>
+      <br /><a href="#/m2ultra">Apple M2 Ultra</a>
     </div>
   )
 }

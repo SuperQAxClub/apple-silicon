@@ -1,6 +1,10 @@
 import { FC, Fragment } from "react";
 
-export const AppleM2Max:FC = () => {
+type M2MaxType = {
+  showChipName:boolean
+}
+
+export const M2MaxElements:FC<M2MaxType> = ({showChipName}) => {
 
   const ChipName:FC = () => {
     return (
@@ -453,61 +457,73 @@ export const AppleM2Max:FC = () => {
   }
 
   return (
+    <Fragment>
+      {showChipName ? (
+        <div className="chip-item-1">
+          <ChipName />
+        </div>
+      ) : ""}
+      <div className="chip-item-2">
+        <CpuPerformance />
+      </div>
+      <div className="chip-item-3">
+        <CpuEfficiency />
+      </div>
+      <div className="chip-item-4">
+        <NeuralEngine2 />
+      </div>
+      <div className="chip-item-5">
+        <SecureEnclave />
+      </div>
+      <div className="chip-item-6">
+        <LeftBottom />
+      </div>
+      <div className="chip-item-7">
+        <Bottom3 />
+      </div>
+      <div className="chip-item-8">
+        <Gpu />
+      </div>
+      <div className="chip-item-9">
+        <GpuLandscape />
+      </div>
+      <div className="chip-item-10">
+        <div className="item-10-1">
+          <Media1 />
+        </div>
+        <div className="item-10-2">
+          <Media1 />
+        </div>
+        <div className="item-10-3">
+          <Media2 />
+        </div>
+        <div className="item-10-4">
+          <Media3 />
+        </div>
+        <div className="item-10-5">
+          <Media3 />
+        </div>
+        <div className="item-10-6">
+          <RightBottom />
+        </div>
+      </div>
+      <div className="chip-item-11">
+        <NeuralEngine1 />
+      </div>
+      <div className="chip-item-12">
+        <RightBottom />
+      </div>
+    </Fragment>
+  )
+}
+
+export const AppleM2Max:FC = () => {
+  return (
     <div className="chip-bg dark-bg">
-      <div className="main-container m2max">
-        <div className="chip-frame">
-          <div className="chip-item-1">
-            <ChipName />
-          </div>
-          <div className="chip-item-2">
-            <CpuPerformance />
-          </div>
-          <div className="chip-item-3">
-            <CpuEfficiency />
-          </div>
-          <div className="chip-item-4">
-            <NeuralEngine2 />
-          </div>
-          <div className="chip-item-5">
-            <SecureEnclave />
-          </div>
-          <div className="chip-item-6">
-            <LeftBottom />
-          </div>
-          <div className="chip-item-7">
-            <Bottom3 />
-          </div>
-          <div className="chip-item-8">
-            <Gpu />
-          </div>
-          <div className="chip-item-9">
-            <GpuLandscape />
-          </div>
-          <div className="chip-item-10">
-            <div className="item-10-1">
-              <Media1 />
-            </div>
-            <div className="item-10-2">
-              <Media1 />
-            </div>
-            <div className="item-10-3">
-              <Media2 />
-            </div>
-            <div className="item-10-4">
-              <Media3 />
-            </div>
-            <div className="item-10-5">
-              <Media3 />
-            </div>
-            <div className="item-10-6">
-              <RightBottom />
-            </div>
-          </div>
-          <div className="chip-item-11">
-            <NeuralEngine1 />
-          </div>
-          <div className="chip-item-12">
-            <RightBottom />
+      <div className="main-container frame-m2max">
+        <div className="frame-item-m2-max">
+          <div className="chip-frame">
+            <M2MaxElements showChipName={true} />
           </div>
         </div>
       </div>

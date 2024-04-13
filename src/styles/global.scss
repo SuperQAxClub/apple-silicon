@@ -1,0 +1,403 @@
+@use 'sass:list';
+@use 'sass:math';
+@use 'common';
+@function number($value) {
+  $result: 0;
+  $digits: 0;
+  $minus: str-slice($value, 1, 1) == '-';
+  $numbers: ('0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9);
+  
+  @for $i from if($minus, 2, 1) through str-length($value) {
+    $character: str-slice($value, $i, $i);
+    
+    @if not (index(map-keys($numbers), $character) or $character == '.') {
+      @return to-length(if($minus, -$result, $result), str-slice($value, $i))
+    }
+    
+    @if $character == '.' {
+      $digits: 1; 
+    } @else if $digits == 0 {
+      $result: $result * 10 + map-get($numbers, $character);  
+    } @else {
+      $digits: $digits * 10;
+      $result: $result + map-get($numbers, $character) / $digits;
+    }
+  }
+  
+  @return if($minus, -$result, $result);
+}
+//---General variables
+$font-sf: "SFPro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$transition-ps: 0.3s cubic-bezier(.15,.51,.3,1);
+$transition-content: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+$transition-login-bar: 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+$safe-left: env(safe-area-inset-left);
+$safe-right: env(safe-area-inset-right);
+$safe-bottom: env(safe-area-inset-bottom);
+$sidebarWidth: calc(#{$safe-left} + 260px);
+$navbarHeight: 50px;
+$radius: 10px;
+//-Color
+$color-list: 'blue' #1488cc 20 136 204,
+             'darkblue' #002c6d 0 44 109,
+             'lightblue' #12D8FA 18 216 250,
+             'red' #e0393f 244 57 63,
+             'darkred' #6b0b50 107 11 80,
+             'pink' #ff0f9b 255 15 155,
+             'yellow' #ffcc4d 255 204 77,
+             'purple' #7f00ff 127 0 255,
+             'green' #339969 51 153 105,
+             'orange' #f39e00 255 166 0;
+
+@each $color in $color-list {
+  .#{nth($color,1)}-color {
+    background: #{nth($color,2)}!important;
+  }
+  .#{nth($color,1)}-text {
+    color: #{nth($color,2)}!important;
+  }
+}
+$grad-list: 
+  'blue' 220 89% 50% 30% 20%,
+;
+@each $grad in $grad-list {
+  $dark: 30;
+  .grad-#{nth($grad,1)} {
+    .ps4-background {
+      background: linear-gradient(to bottom, hsl(list.nth($grad,2),list.nth($grad,3),list.nth($grad,4)), hsl(list.nth($grad,2),list.nth($grad,3),list.nth($grad,5)));
+    }
+    .ps4-dashboard {
+      .dashboard-container {
+        .app-bar {
+          .app-item {
+            .item-icon {
+              background: linear-gradient(to bottom, hsl(list.nth($grad,2),list.nth($grad,3),list.nth($grad,5)), hsl(list.nth($grad,2),list.nth($grad,3),list.nth($grad,6)));
+            }
+          }
+        }
+      }
+    }
+  }
+}
+//Live color
+:root {
+  //Color
+  @each $color in $color-list {
+    --static-#{nth($color,1)}: #{nth($color,2)};
+    --#{nth($color,1)}: #{nth($color,2)};
+  }
+  //General
+  --box-05: rgba(256,256,256,0.5);
+  --border-color: #b9b9b9;
+  --text-color: #000;
+}
+//---Premade
+@mixin center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+@mixin center-transform {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+@mixin center-grid() {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+@mixin ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+@mixin ellipsis2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+@mixin flex-center {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+@mixin flex-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+@mixin double-click-fix {
+  -webkit-user-select: none;     
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+@mixin removeul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+@mixin shadow {
+  filter: drop-shadow(0px 0px 6px rgba(0,0,0,1));
+}
+@mixin removeshadow {
+    -webkit-box-shadow: none!important;
+    -moz-box-shadow: none!important;
+    box-shadow: none!important;
+}
+@mixin removeblur {
+  -webkit-backdrop-filter: none!important;
+  backdrop-filter: none!important;
+}
+@mixin center-bg {
+  background-position: center;
+  background-size: cover;
+}
+@mixin gradient-text {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+@mixin text-shadow {
+  text-shadow: 0px 0px 4px #000;
+}
+@mixin fixed-all-screen {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+//Mixin value
+@mixin backdrop-blur($blur) {
+    -webkit-backdrop-filter: blur($blur);
+    backdrop-filter: blur($blur);
+}
+//Keyframe
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes glowText {
+  0% {
+    text-shadow: 0 0 10px rgba(256,256,256,0.1),0 0 10px rgba(256,256,256,0.1),0 0 10px rgba(256,256,256,0.1);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(256,256,256,0.7),0 0 10px rgba(256,256,256,0.7),0 0 10px rgba(256,256,256,0.7);
+  }
+  100% {
+    text-shadow: 0 0 10px rgba(256,256,256,0.1),0 0 10px rgba(256,256,256,0.1),0 0 10px rgba(256,256,256,0.1);
+  }
+}
+@keyframes barBack {
+  0% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(-5px);
+  }
+}
+@keyframes mainWave {
+  0% {
+    transform: translateX(-300vw);
+  }
+  100% {
+    transform: translateX(0vw);
+  }
+}
+//Main
+* { -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+body {
+    font-family: $font-sf;
+    margin: 0;
+    line-height: 1.5;
+    &.disable-hover {
+      pointer-events: none;
+    }
+}
+a {
+  text-decoration: none;
+}
+.mobile-hide {
+    @include common.media(iphone12promax) {
+      display: none!important;
+    }
+}
+.tablet-hide {
+    @include common.media(tablet) {
+        display: none!important;
+    }
+}
+.desktop-hide {
+    @include common.media(desktop) {
+        display: none!important;
+    }
+}
+.hide-all {
+  display: none!important;
+}
+.pos-rel {
+  position: relative;
+}
+input, select {
+  -webkit-appearance: none;
+  appearance: none;
+  font-family: $font-sf!important;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus,
+a {
+  outline: none;
+}
+a {
+  cursor: pointer;
+}
+a:hover {
+  text-decoration: none;
+}
+button {
+  font-family: $font-sf!important;
+  border: none;
+  background: transparent;
+}
+input[type="date"] {
+  display: block;
+  text-align: left;
+}
+//Grid
+.collab-row {
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 -7.5px;
+    &.row100-fix {
+      width: 100%;
+    }
+}
+.no-gap {
+  margin-right: 0px;
+  margin-left: 0px;
+  > [class*="row-"] {
+    padding: 0;
+  }
+}
+.disable-click {
+  pointer-events: none!important;
+}
+@mixin generateRow($name) {
+    $i: 5;
+    $row: row;
+    @if $name != no {
+        $row: row-#{$name};
+    } @else {
+        $row: row;
+    }
+    .#{$row}-16 {
+        box-sizing: border-box;
+        flex: 0 0 auto;
+        padding: 0 7.5px;
+        flex-basis: percentage(math.div(math.div(100,6),100));
+        max-width: percentage(math.div(math.div(100,6),100));
+        position: relative;
+    }
+    .#{$row}-33 {
+        box-sizing: border-box;
+        flex: 0 0 auto;
+        padding: 0 7.5px;
+        flex-basis: percentage(math.div(math.div(100,3),100));
+        max-width: percentage(math.div(math.div(100,3),100));
+        position: relative;
+    }
+    @while $i <= 100 {
+        $percenti: percentage(math.div($i,100));
+        .#{$row}-#{$i} {
+            box-sizing: border-box;
+            flex: 0 0 auto;
+            padding: 0 7.5px;
+            flex-basis: $percenti;
+            max-width: $percenti;
+            position: relative;
+        }
+        $i: $i + 5;
+    }
+}
+@include generateRow(no);
+$grid-list: 'fullhd' 'fullhd' 'screen and (max-width: 2000px)',
+            'ipadpro129' 'hd' 'screen and (max-width: 1700px)',
+            'ipadpro11-landscape' 'ipad-landscape' 'screen and (max-width: 1200px)',
+            'ipadpro11-portrait' 'ipad-portrait' 'screen and (max-width: 1000px)',
+            'iphone12promax' 'iphone' 'screen and (max-width: 599px)',
+            'iphonese' 'iphonese' 'screen and (max-width: 320px)';
+@each $grid in $grid-list {
+  $grid-media: nth($grid,1);
+  $grid-name: nth($grid,2);
+  @include common.media($grid-media) {
+      @include generateRow($grid-name);
+  }
+}
+
+.chip-bg {
+  --chip-base-color: #fff;
+  background-color: #000;
+  color: var(--chip-base-color);
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  display: grid;
+  place-items: center;
+  &.dark-bg {
+    --chip-base-color: #000;
+    .left-name {
+      background-color: #000;
+      color: #fff;
+      mix-blend-mode: multiply;
+    }
+  }
+  .main-container {
+    width: min(95vw, calc(90vh * var(--ratio-width, 1) / var(--ratio-height, 1)));
+    width: min(95vw, calc(95dvh * var(--ratio-width, 1) / var(--ratio-height, 1)));
+    max-width: 1100px;
+    container-type: inline-size;
+    aspect-ratio: var(--ratio-width) / var(--ratio-height);
+    .chip-frame, .ultra-chip-frame {
+      padding: 2.5cqw;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      display: grid;
+      gap: var(--border-separator-width);
+    }
+    .cpu-performance,
+    .cpu-efficiency,
+    .neural-1,
+    .neural-2,
+    .bottom-1,
+    .bottom-2,
+    .bottom-3,
+    .gpu,
+    .gpu-landscape,
+    .media-1,
+    .media-2,
+    .media-3,
+    .secure-enclave {
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      display: grid;
+      gap: var(--border-separator-width);
+    }
+  }
+}
