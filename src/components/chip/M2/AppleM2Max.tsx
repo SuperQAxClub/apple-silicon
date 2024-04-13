@@ -1,13 +1,17 @@
 import { FC, Fragment } from "react";
 
-export const AppleM2Max:FC = () => {
+type M2MaxType = {
+  showChipName:boolean
+}
+
+export const M2MaxElements:FC<M2MaxType> = ({showChipName}) => {
 
   const ChipName:FC = () => {
     return (
       <div className="left-name">
         <div className="text">
           <span className="apple-logo"></span>
-          <span className="chip-name">M2 PRO</span>
+          <span className="chip-name">M2 MAX</span>
         </div>
       </div>
     )
@@ -72,7 +76,7 @@ export const AppleM2Max:FC = () => {
   }
 
   const NeuralEngine1:FC = () => {
-    const coreCount = 24;
+    const coreCount = 48;
     let coreCountArray:string[] = [];
     for (let index = 0; index < coreCount; index++) {
       coreCountArray.push("a");
@@ -147,12 +151,12 @@ export const AppleM2Max:FC = () => {
   }
 
   const Gpu:FC = () => {
-    const coreCount = 22;
+    const coreCount = 36;
     let coreCountArray:string[] = [];
     for (let index = 0; index < coreCount; index++) {
       coreCountArray.push("a");
     }
-    const Core:FC<gpuCoreIndex> = ({coreIndex}) => {
+    const Core:FC = () => {
       const coreGridCount = 26;
       let coreGridCountArray:number[] = [];
       for (let index = 1; index <= coreGridCount; index++) {
@@ -160,35 +164,48 @@ export const AppleM2Max:FC = () => {
       }
       return (
         <Fragment>
-          {coreIndex < 19 ? (
-            <div className={`main-core-${coreIndex} core-gpu-m2-pro`}>
-              {coreGridCountArray.map((item, index) => (
-                <div className={`core-${item}`} key={`gpuCore${index}`}></div>
-              ))}
-            </div>
-          ) : ""}
-          {coreIndex === 19 ? (
-            <div className={`core-media-1`}>
-              <Media1 />
-            </div>
-          ) : ""}
-          {coreIndex === 20 ? (
-            <div className={`core-media-2`}>
-              <Media2 />
-            </div>
-          ) : ""}
-          {coreIndex === 21 ? (
-            <div className={`core-media-3`}>
-              <Media3 />
-            </div>
-          ) : ""}
+          <div className={`core-gpu-m2-pro`}>
+            {coreGridCountArray.map((item, index) => (
+              <div className={`core-${item}`} key={`gpuCore${index}`}></div>
+            ))}
+          </div>
         </Fragment>
       )
     }
     return (
       <div className="gpu">
         {coreCountArray.map((_item, index) => (
-          <Core key={`gpu${index}`} coreIndex={index} />
+          <Core key={`gpu${index}`} />
+        ))}
+      </div>
+    )
+  }
+  const GpuLandscape:FC = () => {
+    const coreCount = 2;
+    let coreCountArray:string[] = [];
+    for (let index = 0; index < coreCount; index++) {
+      coreCountArray.push("a");
+    }
+    const Core:FC = () => {
+      const coreGridCount = 26;
+      let coreGridCountArray:number[] = [];
+      for (let index = 1; index <= coreGridCount; index++) {
+        coreGridCountArray.push(index);
+      }
+      return (
+        <Fragment>
+          <div className={`core-gpu-landscape-m2-pro`}>
+            {coreGridCountArray.map((item, index) => (
+              <div className={`core-${item}`} key={`gpuCore${index}`}></div>
+            ))}
+          </div>
+        </Fragment>
+      )
+    }
+    return (
+      <div className="gpu-landscape">
+        {coreCountArray.map((_item, index) => (
+          <Core key={`gpu${index}`} />
         ))}
       </div>
     )
@@ -255,6 +272,35 @@ export const AppleM2Max:FC = () => {
             <Core key={`rightBot${index}`} />
           ))}
         </div>
+      </div>
+    )
+  }
+
+  const Bottom3:FC = () => {
+    const coreCount = 6;
+    let coreCountArray:string[] = [];
+    for (let index = 0; index < coreCount; index++) {
+      coreCountArray.push("a");
+    }
+    const Core:FC = () => {
+      const coreGridCount = 14;
+      let coreGridCountArray:number[] = [];
+      for (let index = 1; index <= coreGridCount; index++) {
+        coreGridCountArray.push(index);
+      }
+      return (
+        <div className="core-bottom-m2-3">
+          {coreGridCountArray.map((item, index) => (
+            <div className={`core-${item}`} key={`Bot3Core${index}`}></div>
+          ))}
+        </div>
+      )
+    }
+    return (
+      <div className="bottom-3">
+        {coreCountArray.map((_item, index) => (
+          <Core key={`rightBot${index}`} />
+        ))}
       </div>
     )
   }
@@ -388,7 +434,7 @@ export const AppleM2Max:FC = () => {
         coreMidGridCountArray.push(index);
       }
       return (
-        <div className="core-secure-enclave-m2">
+        <div className="core-secure-enclave-m2-max">
           {coreGridCountArray.map((item, index) => (
             <div className={`core-${item}`} key={`secureCore${index}`}>
               {item === 1 ? (
@@ -411,35 +457,73 @@ export const AppleM2Max:FC = () => {
   }
 
   return (
+    <Fragment>
+      {showChipName ? (
+        <div className="chip-item-1">
+          <ChipName />
+        </div>
+      ) : ""}
+      <div className="chip-item-2">
+        <CpuPerformance />
+      </div>
+      <div className="chip-item-3">
+        <CpuEfficiency />
+      </div>
+      <div className="chip-item-4">
+        <NeuralEngine2 />
+      </div>
+      <div className="chip-item-5">
+        <SecureEnclave />
+      </div>
+      <div className="chip-item-6">
+        <LeftBottom />
+      </div>
+      <div className="chip-item-7">
+        <Bottom3 />
+      </div>
+      <div className="chip-item-8">
+        <Gpu />
+      </div>
+      <div className="chip-item-9">
+        <GpuLandscape />
+      </div>
+      <div className="chip-item-10">
+        <div className="item-10-1">
+          <Media1 />
+        </div>
+        <div className="item-10-2">
+          <Media1 />
+        </div>
+        <div className="item-10-3">
+          <Media2 />
+        </div>
+        <div className="item-10-4">
+          <Media3 />
+        </div>
+        <div className="item-10-5">
+          <Media3 />
+        </div>
+        <div className="item-10-6">
+          <RightBottom />
+        </div>
+      </div>
+      <div className="chip-item-11">
+        <NeuralEngine1 />
+      </div>
+      <div className="chip-item-12">
+        <RightBottom />
+      </div>
+    </Fragment>
+  )
+}
+
+export const AppleM2Max:FC = () => {
+  return (
     <div className="chip-bg dark-bg">
-      <div className="main-container m2pro">
-        <div className="chip-frame">
-          <div className="chip-item-1">
-            <ChipName />
-          </div>
-          <div className="chip-item-2">
-            <CpuPerformance />
-          </div>
-          <div className="chip-item-3">
-            <CpuEfficiency />
-          </div>
-          <div className="chip-item-4">
-            <Gpu />
-          </div>
-          <div className="chip-item-5">
-            <NeuralEngine2 />
-          </div>
-          <div className="chip-item-6">
-            <NeuralEngine1 />
-          </div>
-          <div className="chip-item-7">
-            <SecureEnclave />
-          </div>
-          <div className="chip-item-8">
-            <LeftBottom />
-          </div>
-          <div className="chip-item-9">
-            <RightBottom />
+      <div className="main-container frame-m2max">
+        <div className="frame-item-m2-max">
+          <div className="chip-frame">
+            <M2MaxElements showChipName={true} />
           </div>
         </div>
       </div>

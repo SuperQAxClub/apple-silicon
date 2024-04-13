@@ -1,0 +1,27 @@
+//---Screen size
+$media-list: 'desktop' 'screen and (min-width: 1000px)',
+            'ultrawide' 'screen and (min-width: 2500px)',
+            'highres' 'screen and (min-width: 1700px)',
+            'fullhd' 'screen and (max-width: 2000px)',
+            'ipadpro129' 'screen and (max-width: 1700px)',
+            'ipadpro11-landscape' 'screen and (max-width: 1200px)',
+            'ipadpro11-portrait' 'screen and (max-width: 1000px)',
+            'ipad97-landscape' 'screen and (max-width: 1024px)',
+            'ipad97-portrait' 'screen and (max-width: 800px)',
+            'tablet' 'screen and (min-width: 700px)',
+            'iphone12promax' 'screen and (max-width: 599px)',
+            'iphone12mini' 'screen and (max-width: 400px)',
+            'iphonese' 'screen and (max-width: 320px)',
+            'iphonelandscape' 'screen and (max-height: 500px)',
+            'iphonese-landscape' 'screen and (max-height: 350px)',
+            'darkmode' '(prefers-color-scheme: dark)',
+            'reduce-motion' '(prefers-reduced-motion: reduce)';
+@mixin media($type) {
+  @each $media in $media-list {
+    @if(nth($media,1) == $type) {
+      @media #{nth($media,2)} {
+        @content;
+      }
+    }
+  }
+}
