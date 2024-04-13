@@ -146,10 +146,6 @@ export const M2MaxElements:FC<M2MaxType> = ({showChipName}) => {
     )
   }
 
-  type gpuCoreIndex = {
-    coreIndex:number
-  }
-
   const Gpu:FC = () => {
     const coreCount = 36;
     let coreCountArray:string[] = [];
