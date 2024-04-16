@@ -1,18 +1,61 @@
 @use 'common';
+@use 'sass:list';
+
+.frame-m1 {
+  --ratio-width: 1;
+  --ratio-height: 1;
+  --border-separator-width: 0.5cqw;
+  --border-item-width: 0.1cqw;
+  .chip-frame {
+    $frame-item-list:
+      1 list.slash(1, 3) 1,
+      2 list.slash(1, 3) 2,
+      3 list.slash(3, 5) list.slash(1, 3),
+      4 list.slash(1, 3) 3,
+      5 list.slash(1, 3) list.slash(4, 6),
+      6 3 list.slash(3, 5),
+      7 4 list.slash(3, 5),
+      8 list.slash(3, 5) 5,
+    ;
+    background: linear-gradient(to top right, #b6304b, rgba(160, 128, 69, 0), #3d81e4), linear-gradient(to top left, #2f289a, rgba(160, 128, 69, 0), #da7a64), rgba(160, 128, 69, 1);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 16% 34% 20% 6% auto;
+    @each $item-order, $column, $row in $frame-item-list {
+      .chip-item-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
+    }
+  }
+  .left-name {
+    .text {
+      font-size: 10.5cqw;
+      bottom: 0;
+      .apple-logo {
+        margin-right: 0;
+      }
+      .chip-name {
+        font-size: 1.15em;
+      }
+    }
+  }
+  .cpu-performance, .cpu-efficiency {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .gpu, .neural-1 {
+    grid-template-columns: repeat(8, 1fr);
+  }
+  .neural-1 {
+    gap: 0.3cqw!important
+  }
+
+}
 
 .frame-m2 {
   --ratio-width: 1.11;
   --ratio-height: 1;
-  --border-separator-width: 5px;
-  --border-item-width: 2px;
-  @include common.media(ipadpro11-portrait) {
-    --border-separator-width: 3px;
-    --border-item-width: 1px;
-  }
-  @include common.media(iphone12promax) {
-    --border-separator-width: 2px;
-    --border-item-width: 1px;
-  }
+  --border-separator-width: 0.5cqw;
+  --border-item-width: 0.2cqw;
   .chip-frame {
     background: linear-gradient(135deg, rgba(253,183,46,1) 0%, rgba(247,125,71,1) 25%, rgba(210,60,48,1) 50%, rgba(166,0,157,1) 75%, rgba(113,1,154,1) 100%);
     grid-template-columns: 45% auto;
@@ -100,16 +143,8 @@
 .frame-m2pro {
   --ratio-width: 1.42;
   --ratio-height: 1;
-  --border-separator-width: 5px;
-  --border-item-width: 1px;
-  @include common.media(ipadpro11-portrait) {
-    --border-separator-width: 3px;
-    --border-item-width: 1px;
-  }
-  @include common.media(iphone12promax) {
-    --border-separator-width: 2px;
-    --border-item-width: 1px;
-  }
+  --border-separator-width: 0.4cqw;
+  --border-item-width: 0.1cqw;
   background: linear-gradient(to top left, #429df8, rgba(74, 189, 243, 0), #89dbf3), linear-gradient(to top right, #cfe9ef, rgba(74, 189, 243, 0), #3663ec), rgba(74, 189, 243, 1);
   .chip-frame {
     grid-template-columns: repeat(5, 1fr);
@@ -220,16 +255,8 @@
 .frame-m2max {
   --ratio-width: 0.92;
   --ratio-height: 1;
-  --border-separator-width: 4px;
-  --border-item-width: 1px;
-  @include common.media(ipadpro11-portrait) {
-    --border-separator-width: 3px;
-    --border-item-width: 1px;
-  }
-  @include common.media(iphone12promax) {
-    --border-separator-width: 2px;
-    --border-item-width: 1px;
-  }
+  --border-separator-width: 0.4cqw;
+  --border-item-width: 0.1cqw;
   background: linear-gradient(to top right, #d8b5ef, rgba(148, 94, 250, 0), #3e02f0), linear-gradient(to top left, #6b28f1, rgba(148, 94, 250, 0), #a170ee), rgba(148, 94, 250, 1);
 }
 .frame-item-m2-max {
@@ -343,15 +370,8 @@
 .frame-m2ultra {
   --ratio-width: 0.43;
   --ratio-height: 1;
-  --border-separator-width: 2px;
-  --border-item-width: 1px;
-  @include common.media(ipadpro11-portrait) {
-    --border-separator-width: 2px;
-  }
-  @include common.media(iphone12promax) {
-    --border-separator-width: 1px;
-    --border-item-width: 0.5px
-  }
+  --border-separator-width: 0.4cqw;
+  --border-item-width: 0.1cqw;
   background: linear-gradient(50deg, #f0c68a 20%, #da70a0 40%, #9360d7 65%, #71c1fe 80%);
   .ultra-chip-frame {
     grid-template-rows: auto 5% auto;

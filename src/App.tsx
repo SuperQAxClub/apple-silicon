@@ -4,12 +4,14 @@ import { MainPage } from './components/mainPage'
 import { AppleM2Pro } from './components/chip/M2/AppleM2Pro'
 import { AppleM2Max } from './components/chip/M2/AppleM2Max'
 import { AppleM2Ultra } from './components/chip/M2/AppleM2Ultra'
+import { AppleM1 } from './components/chip/M1/AppleM1'
 
 function App() {
   return (
     <HashRouter>
       <Routes>
         <Route path={`/`} element={<MainPage />} />
+        <Route path={`/m1`} element={<AppleM1 />} />
         <Route path={`/m2`} element={<AppleM2 />} />
         <Route path={`/m2pro`} element={<AppleM2Pro />} />
         <Route path={`/m2max`} element={<AppleM2Max />} />
