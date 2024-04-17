@@ -430,7 +430,7 @@ export const M2MaxElements:FC<M2MaxType> = ({showChipName}) => {
         coreMidGridCountArray.push(index);
       }
       return (
-        <div className="core-secure-enclave-m2-max">
+        <div className="core-secure-enclave-m2-pro">
           {coreGridCountArray.map((item, index) => (
             <div className={`core-${item}`} key={`secureCore${index}`}>
               {item === 1 ? (

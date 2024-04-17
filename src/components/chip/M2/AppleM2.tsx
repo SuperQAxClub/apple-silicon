@@ -394,7 +394,7 @@ export const AppleM2:FC = () => {
   }
 
   return (
-    <div className="chip-bg">
+    <div className="chip-bg dark-bg">
       <div className="main-container frame-m2">
         <div className="chip-frame">
           <div className="chip-item-1">

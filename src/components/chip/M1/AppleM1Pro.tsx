@@ -1,13 +1,13 @@
 import { FC, Fragment } from "react";
 
-export const AppleM2Pro:FC = () => {
+export const AppleM1Pro:FC = () => {
 
   const ChipName:FC = () => {
     return (
       <div className="left-name">
         <div className="text">
           <span className="apple-logo"></span>
-          <span className="chip-name">M2 PRO</span>
+          <span className="chip-name">M1 PRO</span>
         </div>
       </div>
     )
@@ -43,7 +43,7 @@ export const AppleM2Pro:FC = () => {
   }
 
   const CpuEfficiency:FC = () => {
-    const coreCount = 4;
+    const coreCount = 2;
     let coreCountArray:string[] = [];
     for (let index = 0; index < coreCount; index++) {
       coreCountArray.push("a");
@@ -142,53 +142,30 @@ export const AppleM2Pro:FC = () => {
     )
   }
 
-  type gpuCoreIndex = {
-    coreIndex:number
-  }
-
   const Gpu:FC = () => {
-    const coreCount = 22;
+    const coreCount = 16;
     let coreCountArray:string[] = [];
     for (let index = 0; index < coreCount; index++) {
       coreCountArray.push("a");
     }
-    const Core:FC<gpuCoreIndex> = ({coreIndex}) => {
+    const Core:FC = () => {
       const coreGridCount = 26;
       let coreGridCountArray:number[] = [];
       for (let index = 1; index <= coreGridCount; index++) {
         coreGridCountArray.push(index);
       }
       return (
-        <Fragment>
-          {coreIndex < 19 ? (
-            <div className={`main-core-${coreIndex} core-gpu-m2-pro`}>
-              {coreGridCountArray.map((item, index) => (
-                <div className={`core-${item}`} key={`gpuCore${index}`}></div>
-              ))}
-            </div>
-          ) : ""}
-          {coreIndex === 19 ? (
-            <div className={`core-media-1`}>
-              <Media1 />
-            </div>
-          ) : ""}
-          {coreIndex === 20 ? (
-            <div className={`core-media-2`}>
-              <Media2 />
-            </div>
-          ) : ""}
-          {coreIndex === 21 ? (
-            <div className={`core-media-3`}>
-              <Media3 />
-            </div>
-          ) : ""}
-        </Fragment>
+        <div className={`core-gpu-m2-pro`}>
+          {coreGridCountArray.map((item, index) => (
+            <div className={`core-${item}`} key={`gpuCore${index}`}></div>
+          ))}
+        </div>
       )
     }
     return (
       <div className="gpu">
         {coreCountArray.map((_item, index) => (
-          <Core key={`gpu${index}`} coreIndex={index} />
+          <Core key={`gpu${index}`} />
         ))}
       </div>
     )
@@ -412,7 +389,7 @@ export const AppleM2Pro:FC = () => {
 
   return (
     <div className="chip-bg dark-bg">
-      <div className="main-container frame-m2pro">
+      <div className="main-container frame-m1pro">
         <div className="chip-frame">
           <div className="chip-item-1">
             <ChipName />
@@ -440,6 +417,17 @@ export const AppleM2Pro:FC = () => {
           </div>
           <div className="chip-item-9">
             <RightBottom />
+          </div>
+          <div className="chip-item-10">
+            <div className="item-10-a">
+              <Media1 />
+            </div>
+            <div className="item-10-b">
+              <Media2 />
+            </div>
+            <div className="item-10-c">
+              <Media3 />
+            </div>
           </div>
         </div>
       </div>
