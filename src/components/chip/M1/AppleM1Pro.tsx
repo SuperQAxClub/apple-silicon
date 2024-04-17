@@ -1,4 +1,4 @@
-import { FC, Fragment } from "react";
+import { FC } from "react";
 
 export const AppleM1Pro:FC = () => {
 
