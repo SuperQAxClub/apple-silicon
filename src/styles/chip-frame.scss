@@ -7,6 +7,9 @@
   --border-separator-width: 0.5cqw;
   --border-item-width: 0.1cqw;
   .chip-frame {
+    background: linear-gradient(to top right, #b6304b, rgba(160, 128, 69, 0), #3d81e4), linear-gradient(to top left, #2f289a, rgba(160, 128, 69, 0), #da7a64), rgba(160, 128, 69, 1);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 16% 34% 20% 6% auto;
     $frame-item-list:
       1 list.slash(1, 3) 1,
       2 list.slash(1, 3) 2,
@@ -17,9 +20,6 @@
       7 4 list.slash(3, 5),
       8 list.slash(3, 5) 5,
     ;
-    background: linear-gradient(to top right, #b6304b, rgba(160, 128, 69, 0), #3d81e4), linear-gradient(to top left, #2f289a, rgba(160, 128, 69, 0), #da7a64), rgba(160, 128, 69, 1);
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 16% 34% 20% 6% auto;
     @each $item-order, $column, $row in $frame-item-list {
       .chip-item-#{$item-order} {
         grid-column: $column;
@@ -64,7 +64,209 @@
       }
     }
   }
+}
 
+.frame-m1pro {
+  --ratio-width: 1.42;
+  --ratio-height: 1;
+  --border-separator-width: 0.4cqw;
+  --border-item-width: 0.1cqw;
+  background: linear-gradient(to top left, #429df8, rgba(74, 189, 243, 0), #89dbf3), linear-gradient(to top right, #cfe9ef, rgba(74, 189, 243, 0), #3663ec), rgba(74, 189, 243, 1);
+  .chip-frame {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 14% 35% 7% repeat(2, auto);
+    $frame-item-list:
+      1 list.slash(1, 3) 1,
+      2 list.slash(1, 3) 2,
+      3 list.slash(1, 3) 3,
+      4 list.slash(3, 5) list.slash(1, 4),
+      5 1 list.slash(4, 6),
+      6 list.slash(2, 4) list.slash(4, 6),
+      7 4 4,
+      8 4 5,
+      9 5 list.slash(3,6),
+      10 5 list.slash(1, 3),
+    ;
+    @each $item-order, $column, $row in $frame-item-list {
+      .chip-item-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
+    }
+    .chip-item-10 {
+      display: grid;
+      grid-template-rows: repeat(3, auto);
+      gap: var(--border-separator-width);
+    }
+  }
+  .left-name {
+    .text {
+      font-size: 6.3cqw;
+      bottom: 0;
+      .apple-logo {
+        margin-right: 0.7cqw;
+      }
+    }
+  }
+  .cpu-performance {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .cpu-efficiency {
+    grid-template-columns: repeat(2, auto);
+  }
+  
+  .gpu {
+    grid-template-columns: repeat(8, auto);
+    grid-template-rows: repeat(2, 1fr);
+    gap: var(--border-separator-width);
+  }
+  .neural-1 {
+    grid-template-columns: repeat(8, auto);
+  }
+  .neural-2 {
+    grid-template-columns: repeat(2, auto);
+  }
+  .bottom-2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--border-separator-width);
+    .bottom-2-item {
+      display: grid;
+      grid-template-rows: repeat(4, 1fr);
+      gap: var(--border-item-width);
+    }
+  }
+  .media-3 {
+    .core-media-m2-pro-3 {
+      grid-template-rows: 17% auto 17%;
+      .core-mid {
+        grid-template-rows: repeat(2, 14%) repeat(6, auto) repeat(2, 14%);
+      }
+    }
+  }
+}
+
+.frame-m2max, .frame-m1max {
+  --ratio-width: 0.92;
+  --ratio-height: 1;
+  --border-separator-width: 0.4cqw;
+  --border-item-width: 0.1cqw;
+  background: linear-gradient(to top right, #d8b5ef, rgba(148, 94, 250, 0), #3e02f0), linear-gradient(to top left, #6b28f1, rgba(148, 94, 250, 0), #a170ee), rgba(148, 94, 250, 1);
+}
+.frame-item-m1-max {
+  height: 100%;
+  .chip-frame {
+    grid-template-columns: repeat(4, 20%) auto;
+    grid-template-rows: 9.8% 22.6% 4% 12.4% 12.4% auto 4% 26cqw;
+    $frame-item-list:
+      1 list.slash(1, 3) 1,
+      2 list.slash(1, 3) 2,
+      3 list.slash(1, 3) 3,
+      4 1 list.slash(4, 6),
+      5 2 4,
+      6 2 5,
+      7 list.slash(1, 3) list.slash(6, 8),
+      8 list.slash(3, 5) list.slash(1, 8),
+      9 list.slash(3, 5) 7,
+      10 5 list.slash(1, 9),
+      11 list.slash(1, 5) 8,
+    ;
+    @each $item-order, $column, $row in $frame-item-list {
+      .chip-item-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
+    }
+    .chip-item-10 {
+      display: grid;
+      grid-template-rows: repeat(2, 10.5%) auto repeat(2, 11%) 48%;
+      gap: var(--border-separator-width);
+    }
+  }
+  // Chip grid
+  .left-name {
+    .text {
+      font-size: 6.7cqw;
+      left: 0.3cqw;
+      bottom: 0.3cqw;
+      .apple-logo {
+        margin-right: 0.7cqw;
+      }
+    }
+  }
+  .cpu-performance {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .cpu-efficiency {
+    grid-template-columns: repeat(2, auto);
+  }
+  .gpu {
+    grid-template-columns: repeat(8, auto);
+  }
+  .gpu-landscape {
+    grid-template-columns: repeat(2, auto);
+  }
+  .neural-1 {
+    grid-template-columns: repeat(16, auto);
+  }
+  .neural-2 {
+    grid-template-columns: repeat(2, auto);
+  }
+  .bottom-2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--border-separator-width);
+    .bottom-2-item {
+      display: grid;
+      grid-template-rows: repeat(4, 1fr);
+      gap: var(--border-item-width);
+    }
+  }
+  .bottom-3 {
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--border-item-width)!important;
+  }
+  .media-3 {
+    .core-media-m2-pro-3 {
+      grid-template-rows: 17% auto 17%;
+      .core-mid {
+        grid-template-rows: repeat(2, 14%) repeat(6, auto) repeat(2, 14%);
+      }
+    }
+  }
+}
+
+.frame-m1ultra {
+  --ratio-width: 0.43;
+  --ratio-height: 1;
+  --border-separator-width: 0.4cqw;
+  --border-item-width: 0.1cqw;
+  background: linear-gradient(to top left, #f2c8af, rgba(158, 158, 180, 0), #a39cd0), linear-gradient(to top right, #e299ab, rgba(158, 158, 180, 0), #bdced3), rgba(158, 158, 180, 1);
+  .ultra-chip-frame {
+    grid-template-rows: auto 5% auto;
+    grid-template-columns: auto;
+    .chip-main-reverse {
+      transform: rotate(180deg);
+    }
+    .left-name {
+      .text {
+        font-size: 6.7cqw;
+        left: 1cqw;
+        bottom: 1cqw;
+        .apple-logo {
+          margin-right: 0.7cqw;
+        }
+      }
+    }
+    .frame-item-m1-max {
+      .chip-frame {
+        padding: 0;
+        grid-template-rows: 6% 24.5% 5.5% 12.4% 12.4% auto 4% 26cqw;
+        .chip-item-2 {
+          grid-row: 1/3;
+        }
+      }
+    }
+  }
 }
 
 .frame-m2 {
@@ -268,13 +470,7 @@
     }
   }
 }
-.frame-m2max {
-  --ratio-width: 0.92;
-  --ratio-height: 1;
-  --border-separator-width: 0.4cqw;
-  --border-item-width: 0.1cqw;
-  background: linear-gradient(to top right, #d8b5ef, rgba(148, 94, 250, 0), #3e02f0), linear-gradient(to top left, #6b28f1, rgba(148, 94, 250, 0), #a170ee), rgba(148, 94, 250, 1);
-}
+
 .frame-item-m2-max {
   height: 100%;
   .chip-frame {
@@ -372,6 +568,7 @@
   }
   .bottom-3 {
     grid-template-columns: repeat(6, 1fr);
+    gap: var(--border-item-width)!important;
   }
   .media-3 {
     .core-media-m2-pro-3 {

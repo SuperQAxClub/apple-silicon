@@ -5,6 +5,9 @@ import { AppleM2Pro } from './components/chip/M2/AppleM2Pro'
 import { AppleM2Max } from './components/chip/M2/AppleM2Max'
 import { AppleM2Ultra } from './components/chip/M2/AppleM2Ultra'
 import { AppleM1 } from './components/chip/M1/AppleM1'
+import { AppleM1Pro } from './components/chip/M1/AppleM1Pro'
+import { AppleM1Max } from './components/chip/M1/AppleM1Max'
+import { AppleM1Ultra } from './components/chip/M1/AppleM1Ultra'
 
 function App() {
   return (
@@ -12,6 +15,9 @@ function App() {
       <Routes>
         <Route path={`/`} element={<MainPage />} />
         <Route path={`/m1`} element={<AppleM1 />} />
+        <Route path={`/m1pro`} element={<AppleM1Pro />} />
+        <Route path={`/m1max`} element={<AppleM1Max />} />
+        <Route path={`/m1ultra`} element={<AppleM1Ultra />} />
         <Route path={`/m2`} element={<AppleM2 />} />
         <Route path={`/m2pro`} element={<AppleM2Pro />} />
         <Route path={`/m2max`} element={<AppleM2Max />} />
