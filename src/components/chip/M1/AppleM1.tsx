@@ -248,6 +248,189 @@ export const AppleM1:FC = () => {
     )
   }
 
+  const SecureEnclave3:FC = () => {
+    const Core:FC = () => {
+      const coreGridCount = 11;
+      let coreGridCountArray:number[] = [];
+      for (let index = 1; index <= coreGridCount; index++) {
+        coreGridCountArray.push(index);
+      }
+      const coreMidGridCount = 19;
+      let coreMidGridCountArray:number[] = [];
+      for (let index = 1; index <= coreMidGridCount; index++) {
+        coreMidGridCountArray.push(index);
+      }
+      const coreSideGridCount = 20;
+      let coreSideGridCountArray:number[] = [];
+      for (let index = 1; index <= coreSideGridCount; index++) {
+        coreSideGridCountArray.push(index);
+      }
+      return (
+        <div className="core-secure-enclave-m1-3">
+          {coreGridCountArray.map((item, index) => (
+            <div className={`core-${item}`} key={`secureCore${index}`}>
+              {item === 1 || item === 3 ? (
+                <div className="core-side">
+                  {coreSideGridCountArray.map((item1, index1) => (
+                    <div className={`core-side-${item1}`} key={`secureCore${index1}`}></div>
+                  ))}
+                </div>
+              ) : ""}
+              {item === 2 ? (
+                <div className="core-mid">
+                  {coreMidGridCountArray.map((item1, index1) => (
+                    <div className={`core-mid-${item1}`} key={`secureCore${index1}`}></div>
+                  ))}
+                </div>
+              ) : ""}
+            </div>
+          ))}
+        </div>
+      )
+    }
+    return (
+      <div className="secure-enclave">
+        <Core />
+      </div>
+    )
+  }
+
+  const SecureEnclave4:FC = () => {
+    const Core:FC = () => {
+      const coreGridCount = 13;
+      let coreGridCountArray:number[] = [];
+      for (let index = 1; index <= coreGridCount; index++) {
+        coreGridCountArray.push(index);
+      }
+      const coreSideGridCount = 11;
+      let coreSideGridCountArray:number[] = [];
+      for (let index = 1; index <= coreSideGridCount; index++) {
+        coreSideGridCountArray.push(index);
+      }
+      return (
+        <div className="core-secure-enclave-m1-4">
+          {coreGridCountArray.map((item, index) => (
+            <div className={`core-${item}`} key={`secureCore${index}`}>
+              {item === 1 || item === 2 ? (
+                <div className="core-side">
+                  {coreSideGridCountArray.map((item1, index1) => (
+                    <div className={`core-side-${item1}`} key={`secureCore${index1}`}></div>
+                  ))}
+                </div>
+              ) : ""}
+            </div>
+          ))}
+        </div>
+      )
+    }
+    return (
+      <div className="secure-enclave">
+        <Core />
+      </div>
+    )
+  }
+
+  const SecureEnclave5:FC = () => {
+    const Core:FC = () => {
+      const coreGridCount = 7;
+      let coreGridCountArray:number[] = [];
+      for (let index = 1; index <= coreGridCount; index++) {
+        coreGridCountArray.push(index);
+      }
+      const coreSideGridCount = 7;
+      let coreSideGridCountArray:number[] = [];
+      for (let index = 1; index <= coreSideGridCount; index++) {
+        coreSideGridCountArray.push(index);
+      }
+      return (
+        <div className="core-secure-enclave-m1-5">
+          {coreGridCountArray.map((item, index) => (
+            <div className={`core-${item}`} key={`secureCore${index}`}>
+              {item === 1 ? (
+                <div className="core-side">
+                  {coreSideGridCountArray.map((item1, index1) => (
+                    <div className={`core-side-${item1}`} key={`secureCore${index1}`}></div>
+                  ))}
+                </div>
+              ) : ""}
+            </div>
+          ))}
+        </div>
+      )
+    }
+    return (
+      <div className="secure-enclave">
+        <Core />
+      </div>
+    )
+  }
+
+  const SecureEnclave6:FC = () => {
+    const Core:FC = () => {
+      const coreGridCount = 9;
+      let coreGridCountArray:number[] = [];
+      for (let index = 1; index <= coreGridCount; index++) {
+        coreGridCountArray.push(index);
+      }
+      return (
+        <div className="core-secure-enclave-m1-6">
+          {coreGridCountArray.map((item, index) => (
+            <div className={`core-${item}`} key={`secureCore${index}`}></div>
+          ))}
+        </div>
+      )
+    }
+    return (
+      <div className="secure-enclave">
+        <Core />
+      </div>
+    )
+  }
+
+  const SecureEnclave7:FC = () => {
+    const Core:FC = () => {
+      const coreGridCount = 12;
+      let coreGridCountArray:number[] = [];
+      for (let index = 1; index <= coreGridCount; index++) {
+        coreGridCountArray.push(index);
+      }
+      return (
+        <div className="core-secure-enclave-m1-7">
+          {coreGridCountArray.map((item, index) => (
+            <div className={`core-${item}`} key={`secureCore${index}`}></div>
+          ))}
+        </div>
+      )
+    }
+    return (
+      <div className="secure-enclave">
+        <Core />
+      </div>
+    )
+  }
+
+  const SecureEnclaveContainer:FC = () => {
+    return (
+      <div className="secure-enclave-container">
+        <div className="container-1">
+          <SecureEnclave3 />
+        </div>
+        <div className="container-2">
+          <SecureEnclave4 />
+        </div>
+        <div className="container-3">
+          <SecureEnclave5 />
+        </div>
+        <div className="container-4">
+          <SecureEnclave6 />
+        </div>
+        <div className="container-5">
+          <SecureEnclave7 />
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="chip-bg dark-bg">
       <div className="main-container frame-m1">
@@ -268,7 +451,7 @@ export const AppleM1:FC = () => {
             <NeuralEngine1 />
           </div>
           <div className="chip-item-6">
-
+            <SecureEnclaveContainer />
           </div>
           <div className="chip-item-7">
             <SecureEnclave2 />

@@ -48,6 +48,22 @@
   .neural-1 {
     gap: 0.3cqw!important
   }
+  .secure-enclave-container {
+    grid-template-columns: repeat(4, 1fr);
+    $container-item-list:
+      1 list.slash(1, 5) list.slash(1, 3),
+      2 list.slash(1, 3) list.slash(3, 5),
+      3 3 3,
+      4 4 3,
+      5 list.slash(3, 5) 4
+    ;
+    @each $item-order, $column, $row in $container-item-list {
+      .container-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
+    }
+  }
 
 }
 
