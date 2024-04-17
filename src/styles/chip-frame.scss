@@ -4,8 +4,6 @@
 .frame-m1 {
   --ratio-width: 1;
   --ratio-height: 1;
-  --border-separator-width: 0.5cqw;
-  --border-item-width: 0.1cqw;
   .chip-frame {
     background: linear-gradient(to top right, #b6304b, rgba(160, 128, 69, 0), #3d81e4), linear-gradient(to top left, #2f289a, rgba(160, 128, 69, 0), #da7a64), rgba(160, 128, 69, 1);
     grid-template-columns: repeat(4, 1fr);
@@ -69,8 +67,6 @@
 .frame-m1pro {
   --ratio-width: 1.42;
   --ratio-height: 1;
-  --border-separator-width: 0.4cqw;
-  --border-item-width: 0.1cqw;
   background: linear-gradient(to top left, #429df8, rgba(74, 189, 243, 0), #89dbf3), linear-gradient(to top right, #cfe9ef, rgba(74, 189, 243, 0), #3663ec), rgba(74, 189, 243, 1);
   .chip-frame {
     grid-template-columns: repeat(5, 1fr);
@@ -149,8 +145,6 @@
 .frame-m2max, .frame-m1max {
   --ratio-width: 0.92;
   --ratio-height: 1;
-  --border-separator-width: 0.4cqw;
-  --border-item-width: 0.1cqw;
   background: linear-gradient(to top right, #d8b5ef, rgba(148, 94, 250, 0), #3e02f0), linear-gradient(to top left, #6b28f1, rgba(148, 94, 250, 0), #a170ee), rgba(148, 94, 250, 1);
 }
 .frame-item-m1-max {
@@ -238,8 +232,6 @@
 .frame-m1ultra {
   --ratio-width: 0.43;
   --ratio-height: 1;
-  --border-separator-width: 0.4cqw;
-  --border-item-width: 0.1cqw;
   background: linear-gradient(to top left, #f2c8af, rgba(158, 158, 180, 0), #a39cd0), linear-gradient(to top right, #e299ab, rgba(158, 158, 180, 0), #bdced3), rgba(158, 158, 180, 1);
   .ultra-chip-frame {
     grid-template-rows: auto 5% auto;
@@ -272,8 +264,6 @@
 .frame-m2 {
   --ratio-width: 1.11;
   --ratio-height: 1;
-  --border-separator-width: 0.5cqw;
-  --border-item-width: 0.2cqw;
   .chip-frame {
     background: linear-gradient(135deg, rgba(253,183,46,1) 0%, rgba(247,125,71,1) 25%, rgba(210,60,48,1) 50%, rgba(166,0,157,1) 75%, rgba(113,1,154,1) 100%);
     grid-template-columns: 45% auto;
@@ -361,8 +351,6 @@
 .frame-m2pro {
   --ratio-width: 1.42;
   --ratio-height: 1;
-  --border-separator-width: 0.4cqw;
-  --border-item-width: 0.1cqw;
   background: linear-gradient(to top left, #429df8, rgba(74, 189, 243, 0), #89dbf3), linear-gradient(to top right, #cfe9ef, rgba(74, 189, 243, 0), #3663ec), rgba(74, 189, 243, 1);
   .chip-frame {
     grid-template-columns: repeat(5, 1fr);
@@ -583,8 +571,6 @@
 .frame-m2ultra {
   --ratio-width: 0.43;
   --ratio-height: 1;
-  --border-separator-width: 0.4cqw;
-  --border-item-width: 0.1cqw;
   background: linear-gradient(50deg, #f0c68a 20%, #da70a0 40%, #9360d7 65%, #71c1fe 80%);
   .ultra-chip-frame {
     grid-template-rows: auto 5% auto;
