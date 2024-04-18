@@ -90,7 +90,7 @@ $grad-list:
   --box-05: rgba(256,256,256,0.5);
   --border-color: #b9b9b9;
   --text-color: #000;
-  --border-separator-width: 4px;
+  --border-separator-width: 5px;
   --border-item-width: 1px;
 }
 //---Premade
@@ -395,6 +395,7 @@ $grid-list: 'fullhd' 'fullhd' 'screen and (max-width: 2000px)',
     .media-1,
     .media-2,
     .media-3,
+    .media-4,
     .secure-enclave,
     .secure-enclave-container {
       width: 100%;
