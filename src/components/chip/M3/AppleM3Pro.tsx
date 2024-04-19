@@ -1,32 +1,32 @@
 import { FC } from "react";
 
-export const AppleM3:FC = () => {
+export const AppleM3Pro:FC = () => {
 
   const ChipName:FC = () => {
     return (
       <div className="left-name">
         <div className="text">
           <span className="apple-logo"></span>
-          <span className="chip-name">M3</span>
+          <span className="chip-name">M3 PRO</span>
         </div>
       </div>
     )
   }
 
   const CpuPerformance:FC = () => {
-    const coreCount = 4;
+    const coreCount = 6;
     let coreCountArray:string[] = [];
     for (let index = 0; index < coreCount; index++) {
       coreCountArray.push("a");
     }
     const CpuCore:FC = () => {
-      const coreGridCount = 17;
+      const coreGridCount = 13;
       let coreGridCountArray:number[] = [];
       for (let index = 1; index <= coreGridCount; index++) {
         coreGridCountArray.push(index);
       }
       return (
-        <div className="core-cpu-performance-m2">
+        <div className="core-cpu-performance-m2-pro">
           {coreGridCountArray.map((item, index) => (
             <div className={`core-${item}`} key={`cpuPerfCore${index}`}></div>
           ))}
@@ -43,19 +43,19 @@ export const AppleM3:FC = () => {
   }
 
   const CpuEfficiency:FC = () => {
-    const coreCount = 4;
+    const coreCount = 6;
     let coreCountArray:string[] = [];
     for (let index = 0; index < coreCount; index++) {
       coreCountArray.push("a");
     }
     const CpuCore:FC = () => {
-      const coreGridCount = 25;
+      const coreGridCount = 15;
       let coreGridCountArray:number[] = [];
       for (let index = 1; index <= coreGridCount; index++) {
         coreGridCountArray.push(index);
       }
       return (
-        <div className="core-cpu-efficiency-m2">
+        <div className="core-cpu-efficiency-m2-pro">
           {coreGridCountArray.map((item, index) => (
             <div className={`core-${item}`} key={`cpuEffCore${index}`}></div>
           ))}
@@ -72,19 +72,19 @@ export const AppleM3:FC = () => {
   }
 
   const NeuralEngine1:FC = () => {
-    const coreCount = 16;
+    const coreCount = 24;
     let coreCountArray:string[] = [];
     for (let index = 0; index < coreCount; index++) {
       coreCountArray.push("a");
     }
     const CpuCore:FC = () => {
-      const coreGridCount = 8;
+      const coreGridCount = 20;
       let coreGridCountArray:number[] = [];
       for (let index = 1; index <= coreGridCount; index++) {
         coreGridCountArray.push(index);
       }
       return (
-        <div className="core-neural-m3-1">
+        <div className="core-neural-m2-pro-1">
           {coreGridCountArray.map((item, index) => (
             <div className={`core-${item}`} key={`neural1Core${index}`}></div>
           ))}
@@ -100,8 +100,50 @@ export const AppleM3:FC = () => {
     )
   }
 
+  const LeftBottom:FC = () => {
+    const coreCount = 2;
+    let coreCountArray:string[] = [];
+    for (let index = 0; index < coreCount; index++) {
+      coreCountArray.push("a");
+    }
+    const CpuCore:FC = () => {
+      const coreGridCount = 25;
+      let coreGridCountArray:number[] = [];
+      for (let index = 1; index <= coreGridCount; index++) {
+        coreGridCountArray.push(index);
+      }
+      const coreMidGridCount = 11;
+      let coreMidGridCountArray:number[] = [];
+      for (let index = 1; index <= coreMidGridCount; index++) {
+        coreMidGridCountArray.push(index);
+      }
+      return (
+        <div className="core-bottom-m2-1">
+          {coreGridCountArray.map((item, index) => (
+            <div className={`core-${item}`} key={`leftBotCore${index}`}>
+              {item === 1 ? (
+                <div className="core-mid">
+                  {coreMidGridCountArray.map((item1, index1) => (
+                    <div className={`core-mid-${item1}`} key={`leftBotCoreMid${index1}`}></div>
+                  ))}
+                </div>
+              ) : ""}
+            </div>
+          ))}
+        </div>
+      )
+    }
+    return (
+      <div className="bottom-1">
+        {coreCountArray.map((_item, index) => (
+          <CpuCore key={`leftBot${index}`} />
+        ))}
+      </div>
+    )
+  }
+
   const Gpu:FC = () => {
-    const coreCount = 10;
+    const coreCount = 18;
     let coreCountArray:string[] = [];
     for (let index = 0; index < coreCount; index++) {
       coreCountArray.push("a");
@@ -129,20 +171,49 @@ export const AppleM3:FC = () => {
     )
   }
 
-  const NeuralEngine2:FC = () => {
-    const coreCount = 12;
+  const Gpu2:FC = () => {
+    const coreCount = 6;
     let coreCountArray:string[] = [];
     for (let index = 0; index < coreCount; index++) {
       coreCountArray.push("a");
     }
     const Core:FC = () => {
-      const coreGridCount = 14;
+      const coreGridCount = 17;
       let coreGridCountArray:number[] = [];
       for (let index = 1; index <= coreGridCount; index++) {
         coreGridCountArray.push(index);
       }
       return (
-        <div className="core-neural-m3-2">
+        <div className="core-gpu-m3-pro-2">
+          {coreGridCountArray.map((item, index) => (
+            <div className={`core-${item}`} key={`gpuCore${index}`}></div>
+          ))}
+        </div>
+      )
+    }
+    return (
+      <div className="gpu-2">
+        {coreCountArray.map((_item, index) => (
+          <Core key={`gpu${index}`} />
+        ))}
+      </div>
+    )
+  }
+
+  const NeuralEngine2:FC = () => {
+    const coreCount = 16;
+    let coreCountArray:string[] = [];
+    for (let index = 0; index < coreCount; index++) {
+      coreCountArray.push("a");
+    }
+    const Core:FC = () => {
+      const coreGridCount = 10;
+      let coreGridCountArray:number[] = [];
+      for (let index = 1; index <= coreGridCount; index++) {
+        coreGridCountArray.push(index);
+      }
+      return (
+        <div className="core-neural-m3-pro-2">
           {coreGridCountArray.map((item, index) => (
             <div className={`core-${item}`} key={`rightNeuralCore${index}`}></div>
           ))}
@@ -159,7 +230,7 @@ export const AppleM3:FC = () => {
   }
 
   const RightBottom:FC = () => {
-    const coreCount = 3;
+    const coreCount = 4;
     let coreCountArray:string[] = [];
     for (let index = 0; index < coreCount; index++) {
       coreCountArray.push("a");
@@ -189,26 +260,17 @@ export const AppleM3:FC = () => {
 
   const Media1:FC = () => {
     const Core:FC = () => {
-      const coreGridCount = 27;
+      const coreGridCount = 24;
       let coreGridCountArray:number[] = [];
       for (let index = 1; index <= coreGridCount; index++) {
         coreGridCountArray.push(index);
       }
-      const coreMidGridCount = 8;
-      let coreMidGridCountArray:number[] = [];
-      for (let index = 1; index <= coreMidGridCount; index++) {
-        coreMidGridCountArray.push(index);
-      }
       return (
-        <div className="core-media-m2-1">
+        <div className="core-media-m3-pro-1">
           {coreGridCountArray.map((item, index) => (
-            <div className={`core-${item}`} key={`media1Core${index}`}>
-              {item === 6 ? (
-                <div className="core-mid">
-                  {coreMidGridCountArray.map((item1, index1) => (
-                    <div className={`core-mid-${item1}`} key={`media1CoreMid${index1}`}></div>
-                  ))}
-                </div>
+            <div className={`core-${item}`} key={`media3Core${index}`}>
+              {item === 1 ? (
+                <div className="core-mid"></div>
               ) : ""}
             </div>
           ))}
@@ -216,7 +278,7 @@ export const AppleM3:FC = () => {
       )
     }
     return (
-      <div className="media-1">
+      <div className="media">
         <Core />
       </div>
     )
@@ -224,35 +286,23 @@ export const AppleM3:FC = () => {
 
   const Media2:FC = () => {
     const Core:FC = () => {
-      const coreGridCount = 3;
+      const coreGridCount = 27;
       let coreGridCountArray:number[] = [];
       for (let index = 1; index <= coreGridCount; index++) {
         coreGridCountArray.push(index);
       }
-      const coreMidGridCountSide = 9;
-      let coreMidGridCountSideArray:number[] = [];
-      for (let index = 1; index <= coreMidGridCountSide; index++) {
-        coreMidGridCountSideArray.push(index);
-      }
-      const coreMidGridCountMid = 9;
-      let coreMidGridCountMidArray:number[] = [];
-      for (let index = 1; index <= coreMidGridCountMid; index++) {
-        coreMidGridCountMidArray.push(index);
+      const coreMidGridCount = 10;
+      let coreMidGridCountArray:number[] = [];
+      for (let index = 1; index <= coreMidGridCount; index++) {
+        coreMidGridCountArray.push(index);
       }
       return (
-        <div className="core-media-m3-2">
+        <div className="core-media-m3-pro-2">
           {coreGridCountArray.map((item, index) => (
             <div className={`core-${item}`} key={`media2Core${index}`}>
-              {item === 1 || item === 3 ? (
-                <div className="core-side">
-                  {coreMidGridCountSideArray.map((item1, index1) => (
-                    <div className={`core-side-${item1}`} key={`media2CoreSide${index1}`}></div>
-                  ))}
-                </div>
-              ) : ""}
-              {item === 2 ? (
+              {item === 1 ? (
                 <div className="core-mid">
-                  {coreMidGridCountMidArray.map((item1, index1) => (
+                  {coreMidGridCountArray.map((item1, index1) => (
                     <div className={`core-mid-${item1}`} key={`media2CoreMid${index1}`}></div>
                   ))}
                 </div>
@@ -263,7 +313,7 @@ export const AppleM3:FC = () => {
       )
     }
     return (
-      <div className="media-2">
+      <div className="media">
         <Core />
       </div>
     )
@@ -271,43 +321,24 @@ export const AppleM3:FC = () => {
 
   const Media3:FC = () => {
     const Core:FC = () => {
-      const coreGridCount = 7;
+      const coreGridCount = 28;
       let coreGridCountArray:number[] = [];
       for (let index = 1; index <= coreGridCount; index++) {
         coreGridCountArray.push(index);
       }
-      const coreMidGridCountSide = 9;
+      const coreMidGridCountSide = 3;
       let coreMidGridCountSideArray:number[] = [];
       for (let index = 1; index <= coreMidGridCountSide; index++) {
         coreMidGridCountSideArray.push(index);
       }
-      const coreMidGridCountMid = 19;
-      let coreMidGridCountMidArray:number[] = [];
-      for (let index = 1; index <= coreMidGridCountMid; index++) {
-        coreMidGridCountMidArray.push(index);
-      }
       return (
-        <div className="core-media-m3-3">
+        <div className="core-media-m3-pro-3">
           {coreGridCountArray.map((item, index) => (
             <div className={`core-${item}`} key={`media3Core${index}`}>
-              {item === 2 || item === 3 ? (
+              {[1, 2, 3, 4].includes(item) ? (
                 <div className="core-side">
                   {coreMidGridCountSideArray.map((item1, index1) => (
                     <div className={`core-side-${item1}`} key={`media3CoreSide${index1}`}></div>
-                  ))}
-                </div>
-              ) : ""}
-              {item === 1 ? (
-                <div className="core-mid">
-                  {coreMidGridCountMidArray.map((item1, index1) => (
-                    <div className={`core-mid-${item1}`} key={`media3CoreMid${index1}`}>
-                      {item1 === 9 ? (
-                        <div className="core-split">
-                          <div className="split-item"></div>
-                          <div className="split-item"></div>
-                        </div>
-                      ) : ""}
-                    </div>
                   ))}
                 </div>
               ) : ""}
@@ -317,7 +348,7 @@ export const AppleM3:FC = () => {
       )
     }
     return (
-      <div className="media-3">
+      <div className="media">
         <Core />
       </div>
     )
@@ -325,18 +356,18 @@ export const AppleM3:FC = () => {
 
   const Media4:FC = () => {
     const Core:FC = () => {
-      const coreGridCount = 15;
+      const coreGridCount = 13;
       let coreGridCountArray:number[] = [];
       for (let index = 1; index <= coreGridCount; index++) {
         coreGridCountArray.push(index);
       }
-      const coreMidGridCount = 24;
+      const coreMidGridCount = 20;
       let coreMidGridCountArray:number[] = [];
       for (let index = 1; index <= coreMidGridCount; index++) {
         coreMidGridCountArray.push(index);
       }
       return (
-        <div className="core-media-m3-4">
+        <div className="core-media-m3-pro-4">
           {coreGridCountArray.map((item, index) => (
             <div className={`core-${item}`} key={`media3Core${index}`}>
               {item === 1 ? (
@@ -352,7 +383,7 @@ export const AppleM3:FC = () => {
       )
     }
     return (
-      <div className="media-4">
+      <div className="media">
         <Core />
       </div>
     )
@@ -360,7 +391,7 @@ export const AppleM3:FC = () => {
 
   const SecureEnclave:FC = () => {
     const Core:FC = () => {
-      const coreGridCount = 23;
+      const coreGridCount = 19;
       let coreGridCountArray:number[] = [];
       for (let index = 1; index <= coreGridCount; index++) {
         coreGridCountArray.push(index);
@@ -370,13 +401,8 @@ export const AppleM3:FC = () => {
       for (let index = 1; index <= coreMidGridCount; index++) {
         coreMidGridCountArray.push(index);
       }
-      const coreSideGridCount = 2;
-      let coreSideGridCountArray:number[] = [];
-      for (let index = 1; index <= coreSideGridCount; index++) {
-        coreSideGridCountArray.push(index);
-      }
       return (
-        <div className="core-secure-enclave-m3">
+        <div className="core-secure-enclave-m3-pro">
           {coreGridCountArray.map((item, index) => (
             <div className={`core-${item}`} key={`secureCore${index}`}>
               {item === 1 ? (
@@ -386,7 +412,35 @@ export const AppleM3:FC = () => {
                   ))}
                 </div>
               ) : ""}
-              {item === 3 || item === 6 ? (
+            </div>
+          ))}
+        </div>
+      )
+    }
+    return (
+      <div className="secure-enclave">
+        <Core />
+      </div>
+    )
+  }
+
+  const SecureEnclave2:FC = () => {
+    const Core:FC = () => {
+      const coreGridCount = 9;
+      let coreGridCountArray:number[] = [];
+      for (let index = 1; index <= coreGridCount; index++) {
+        coreGridCountArray.push(index);
+      }
+      const coreSideGridCount = 6;
+      let coreSideGridCountArray:number[] = [];
+      for (let index = 1; index <= coreSideGridCount; index++) {
+        coreSideGridCountArray.push(index);
+      }
+      return (
+        <div className="core-secure-enclave-m3-pro-2">
+          {coreGridCountArray.map((item, index) => (
+            <div className={`core-${item}`} key={`secureCore${index}`}>
+              {item === 1 || item === 6 ? (
                 <div className="core-side">
                   {coreSideGridCountArray.map((item1, index1) => (
                     <div className={`core-side-${item1}`} key={`secureCore${index1}`}></div>
@@ -407,43 +461,76 @@ export const AppleM3:FC = () => {
 
   return (
     <div className="chip-bg dark-bg">
-      <div className="main-container frame-m3">
+      <div className="main-container frame-m3-pro">
         <div className="chip-frame">
           <div className="chip-item-1">
             <ChipName />
           </div>
           <div className="chip-item-2">
-            <NeuralEngine2 />
+            <Gpu2 />
           </div>
           <div className="chip-item-3">
             <Gpu />
           </div>
           <div className="chip-item-4">
-            <NeuralEngine1 />
+            <div className="frame-split">
+              <div className="split-item">
+                <SecureEnclave />
+              </div>
+              <div className="split-item">
+                <SecureEnclave />
+              </div>
+            </div>
           </div>
           <div className="chip-item-5">
-            <Media1 />
+            <NeuralEngine2 />
           </div>
           <div className="chip-item-6">
-            <SecureEnclave />
+            <Media2 />
           </div>
           <div className="chip-item-7">
-            <RightBottom />
+            <SecureEnclave2 />
           </div>
           <div className="chip-item-8">
-            <CpuPerformance />
+            <Media1 />
           </div>
           <div className="chip-item-9">
-            <CpuEfficiency />
+            <Media3 />
           </div>
           <div className="chip-item-10">
-            <Media2 />
+            <Media1 />
           </div>
           <div className="chip-item-11">
             <Media3 />
           </div>
           <div className="chip-item-12">
             <Media4 />
+          </div>
+          <div className="chip-item-13">
+            <Media4 />
+          </div>
+          <div className="chip-item-14">
+            <div className="frame-split">
+              <div className="split-item">
+                <CpuPerformance />
+              </div>
+              <div className="split-item">
+                <CpuEfficiency />
+              </div>
+            </div>
+          </div>
+          <div className="chip-item-15">
+            <div className="frame-split">
+                <div className="split-item">
+                  <RightBottom />
+                </div>
+                <div className="split-item">
+                  <RightBottom />
+                </div>
+              </div>
+          </div>
+          <div className="chip-item-16">
+            <NeuralEngine1 />
           </div>
         </div>
       </div>
