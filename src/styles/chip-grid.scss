@@ -25,6 +25,16 @@
   }
 }
 
+[class*="core-cpu"],
+[class*="core-neural"],
+[class*="core-bottom"],
+[class*="core-gpu"],
+[class*="core-media"],
+[class*="core-secure-enclave"]
+ {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
 .core-cpu-performance-m1 {
   display: grid;
   grid-template-columns: 20% repeat(5, auto) 20%;
