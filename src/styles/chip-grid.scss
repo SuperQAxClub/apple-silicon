@@ -353,6 +353,34 @@
   }
 }
 
+.core-cpu-efficiency-m3-max {
+  display: grid;
+  grid-template-columns: auto 2% 13% 2% 13% 2% auto;
+  gap: var(--border-item-width);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  $core-item-list:
+    1 list.slash(1, 8) 1,
+    2 1 list.slash(1, 3),
+    3 7 list.slash(1, 3),
+    4 list.slash(1, 8) 7,
+    5 1 list.slash(6, 8),
+    6 7 list.slash(6, 8),
+    7 2 list.slash(2, 7),
+    8 3 list.slash(2, 7),
+    9 4 list.slash(2, 7),
+    10 5 list.slash(2, 7),
+    11 6 list.slash(2, 7),
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+}
+
 .core-neural-m1 {
   height: 100%;
   display: grid;
@@ -1085,6 +1113,69 @@
     }
   }
 }
+.core-media-m3-max-1 {
+  height: 100%;
+  display: grid;
+  gap: var(--border-item-width);
+  grid-template-columns: 6% auto 6%;
+  grid-template-rows: 15% auto 15%;
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  .core-1, .core-2, .core-3 {
+    background-color: transparent;
+  }
+  $core-item-list:
+    1 2 2,
+    2 2 1,
+    3 2 3,
+    4 1 list.slash(1, 4),
+    5 3 list.slash(1, 4)
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+  .core-side {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: var(--border-item-width);
+    > [class*="core-side-"] {
+      flex: 1;
+      background-color: var(--chip-base-color);
+    }
+  }
+  .core-mid {
+    height: 100%;
+    display: grid;
+    gap: var(--border-item-width);
+    grid-template-columns: repeat(5, 1fr);
+    // grid-template-rows: 20% 15% auto 15% 20%;
+    > [class*="core-mid-"] {
+      background-color: var(--chip-base-color);
+    }
+    $core-mid-item-list:
+      1 1 list.slash(2, 8),
+      2 5 list.slash(2, 8),
+      3 list.slash(2, 5) 1,
+      4 2 list.slash(1, 3),
+      5 4 list.slash(1, 3),
+      6 list.slash(2, 5) 8,
+      7 2 list.slash(7, 9),
+      8 4 list.slash(7, 9),
+      9 3 list.slash(2, 8),
+    ;
+    @each $item-order, $column, $row in $core-mid-item-list {
+      .core-mid-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
+    }
+  }
+}
 
 .core-media-m2-2 {
   height: 100%;
@@ -1262,6 +1353,52 @@
     display: grid;
     gap: var(--border-item-width);
     grid-template-columns: repeat(2, 17%) auto repeat(2, 17%);
+    grid-template-rows: repeat(2, auto) repeat(2, 5%) repeat(2, auto);
+    > [class*="core-mid-"] {
+      background-color: var(--chip-base-color);
+    }
+    $core-mid-item-list:
+      1 1 list.slash(1, 7),
+      2 list.slash(2, 5) 1,
+      3 list.slash(2, 5) 6,
+      4 5 list.slash(1, 7),
+      5 list.slash(1, 3) list.slash(2, 6),
+      6 list.slash(4, 6) list.slash(2, 6)
+    ;
+    @each $item-order, $column, $row in $core-mid-item-list {
+      .core-mid-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
+    }
+  }
+}
+.core-media-m3-max-2 {
+  height: 100%;
+  display: grid;
+  gap: var(--border-item-width);
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: auto 10% repeat(4, 2%) 10% auto;
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  .core-1 {
+    background-color: transparent;
+  }
+  $core-item-list:
+    1 list.slash(2, 10) list.slash(2, 8),
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+  .core-mid {
+    height: 100%;
+    display: grid;
+    gap: var(--border-item-width);
+    grid-template-columns: repeat(2, 12%) auto repeat(2, 12%);
     grid-template-rows: repeat(2, auto) repeat(2, 5%) repeat(2, auto);
     > [class*="core-mid-"] {
       background-color: var(--chip-base-color);
@@ -1504,6 +1641,43 @@
     }
   }
 }
+.core-media-m3-max-3 {
+  height: 100%;
+  display: grid;
+  gap: var(--border-item-width);
+  grid-template-columns: auto 6% repeat(2, auto) 6% auto;
+  grid-template-rows: repeat(3, 11%) auto repeat(3, 11%);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  .core-1 {
+    background-color: transparent;
+  }
+  $core-item-list:
+    1 list.slash(2, 6) 4,
+    2 list.slash(1, 4) 1,
+    3 list.slash(4, 7) 1,
+    4 list.slash(1, 4) 7,
+    5 list.slash(4, 7) 7,
+    6 list.slash(3, 5) list.slash(2, 4),
+    7 list.slash(3, 5) list.slash(5, 7)
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+  .core-mid {
+    height: 100%;
+    display: grid;
+    gap: var(--border-item-width);
+    grid-template-columns: 23% repeat(5, auto) 23%;
+    > [class*="core-mid-"] {
+      background-color: var(--chip-base-color);
+    }
+  }
+}
 
 .core-media-m3-3 {
   height: 100%;
@@ -1719,6 +1893,64 @@
         grid-column: $column;
         grid-row: $row;
       }
+    }
+  }
+}
+.core-media-m3-max-4 {
+  height: 100%;
+  display: grid;
+  gap: var(--border-item-width);
+  grid-template-columns: repeat(14, 1fr);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  $core-item-list:
+    1 list.slash(1, 7) 1,
+    2 1 list.slash(1, 3),
+    3 list.slash(9, 15) 1,
+    4 14 list.slash(1, 3),
+    5 list.slash(1, 7) 12,
+    6 1 list.slash(11, 13),
+    7 list.slash(9, 15) 12,
+    8 14 list.slash(11, 13),
+    9 7 list.slash(1, 3),
+    10 8 list.slash(1, 3),
+    11 7 list.slash(11, 13),
+    12 8 list.slash(11, 13),
+    13 1 list.slash(3, 11),
+    14 14 list.slash(3, 11),
+    15 2 list.slash(2, 12),
+    16 3 list.slash(2, 12),
+    17 4 list.slash(2, 12),
+    18 5 list.slash(2, 12),
+    19 6 list.slash(2, 12),
+    20 9 list.slash(2, 12),
+    21 10 list.slash(2, 12),
+    22 11 list.slash(2, 12),
+    23 12 list.slash(2, 12),
+    24 13 list.slash(2, 12),
+    25 list.slash(7, 9) 3,
+    26 list.slash(7, 9) 4,
+    27 list.slash(7, 9) 5,
+    28 list.slash(7, 9) 6,
+    29 list.slash(7, 9) 7,
+    30 list.slash(7, 9) 8,
+    31 list.slash(7, 9) 9,
+    32 list.slash(7, 9) 10,
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+  .core-mid {
+    height: 100%;
+    display: grid;
+    gap: var(--border-item-width);
+    grid-template-columns: 23% repeat(5, auto) 23%;
+    > [class*="core-mid-"] {
+      background-color: var(--chip-base-color);
     }
   }
 }
@@ -2334,6 +2566,54 @@
   }
 }
 
+.core-secure-enclave-m3-max {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, 6%) auto repeat(6, 6%);
+  grid-template-rows: repeat(3, 12%) auto repeat(3, 12%);
+  gap: var(--border-item-width);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  $core-item-list:
+    1 list.slash(1, 3) 1,
+    2 list.slash(3, 5) 1,
+    3 list.slash(5, 10) 1,
+    4 list.slash(10, 12) 1,
+    5 list.slash(12, 14) 1,
+    6 list.slash(1, 5) 2,
+    7 list.slash(5, 10) 2,
+    8 list.slash(10, 14) 2,
+    9 list.slash(1, 3) list.slash(3, 6),
+    10 list.slash(12, 14) list.slash(3, 6),
+    11 list.slash(3, 12) 3,
+    12 list.slash(3, 12) 5,
+    13 list.slash(1, 5) 6,
+    14 list.slash(5, 10) 6,
+    15 list.slash(10, 14) 6,
+    16 list.slash(1, 3) 7,
+    17 list.slash(3, 5) 7,
+    18 list.slash(5, 10) 7,
+    19 list.slash(10, 12) 7,
+    20 list.slash(12, 14) 7
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+  .core-mid {
+    height: 100%;
+    display: grid;
+    gap: var(--border-item-width);
+    grid-template-rows: repeat(4, 9%) auto repeat(4, 9%);
+    > [class*="core-mid-"] {
+      background-color: var(--chip-base-color);
+    }
+  }
+}
+
 .core-secure-enclave-m3-pro-2 {
   height: 100%;
   display: grid;
@@ -2365,6 +2645,44 @@
     display: grid;
     gap: var(--border-item-width);
     > [class*="core-side-"] {
+      background-color: var(--chip-base-color);
+    }
+  }
+}
+
+.core-secure-enclave-m3-max-2 {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 14%) 9% auto 9% repeat(2, 14%);
+  grid-template-rows: repeat(6, 1fr);
+  gap: var(--border-item-width);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  .core-1 {
+    background-color: transparent;
+  }
+  $core-item-list:
+    1 4 list.slash(1, 7),
+    2 2 list.slash(1, 4),
+    3 2 list.slash(4, 7),
+    4 3 list.slash(1, 7),
+    5 5 list.slash(1, 7),
+    6 6 list.slash(4, 7),
+    7 6 list.slash(1, 4)
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+  .core-mid {
+    height: 100%;
+    display: grid;
+    gap: var(--border-item-width);
+    grid-template-rows: auto repeat(6, 8%) auto ;
+    > [class*="core-mid-"] {
       background-color: var(--chip-base-color);
     }
   }
