@@ -8,12 +8,17 @@ import { AppleM1 } from './components/chip/M1/AppleM1'
 import { AppleM1Pro } from './components/chip/M1/AppleM1Pro'
 import { AppleM1Max } from './components/chip/M1/AppleM1Max'
 import { AppleM1Ultra } from './components/chip/M1/AppleM1Ultra'
+import { AppleM3 } from './components/chip/M3/AppleM3'
+import { AppleM3Pro } from './components/chip/M3/AppleM3Pro'
+import { AppleM3Max } from './components/chip/M3/AppleM3Max'
+import { AppleA15 } from './components/chip/AFamily/AppleA15'
 
 function App() {
   return (
     <HashRouter>
       <Routes>
         <Route path={`/`} element={<MainPage />} />
+        <Route path={`/a15`} element={<AppleA15 />} />
         <Route path={`/m1`} element={<AppleM1 />} />
         <Route path={`/m1pro`} element={<AppleM1Pro />} />
         <Route path={`/m1max`} element={<AppleM1Max />} />
@@ -22,6 +27,9 @@ function App() {
         <Route path={`/m2pro`} element={<AppleM2Pro />} />
         <Route path={`/m2max`} element={<AppleM2Max />} />
         <Route path={`/m2ultra`} element={<AppleM2Ultra />} />
+        <Route path={`/m3`} element={<AppleM3 />} />
+        <Route path={`/m3pro`} element={<AppleM3Pro />} />
+        <Route path={`/m3max`} element={<AppleM3Max />} />
       </Routes>
     </HashRouter>
   )
