@@ -4,15 +4,15 @@
 .frame-a15 {
   --ratio-width: 1;
   --ratio-height: 1;
-  --background: linear-gradient(to top right, #62b8e5, rgba(126, 101, 220, 0), #e94d99), linear-gradient(to top left, #7e65de, rgba(126, 101, 220, 0), #7d66db), rgba(126, 101, 220, 1);
+  --background: linear-gradient(to top right, #62b8e5, #5e9bde, #7c67db 45%, #da65e8, #e94e99);
+  @include common.chip-component-grid() {
+    gap: var(--a-border-item-width);
+  }
   .chip-frame {
     background: var(--background);
     gap: var(--a-border-separator-width);
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 16% 34% 25% auto;
-    // > [class*="chip-item-"] {
-    //   background-color: var(--chip-base-color);
-    // }
+    grid-template-rows: repeat(4, 1fr);
     $frame-item-list:
       1 list.slash(1, 3) list.slash(1, 3),
       2 list.slash(3, 5) list.slash(1, 3),
@@ -28,29 +28,65 @@
       }
     }
   }
+  .top-left-grid {
+    height: 100%;
+    display: grid;
+    gap: var(--border-separator-width);
+    grid-template-rows: 26% auto 27%;
+  }
+  .bottom-left-grid {
+    height: 100%;
+    display: grid;
+    gap: var(--border-separator-width);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    // > [class*="item-"] {
+    //   background-color: var(--chip-base-color);
+    // }
+    $item-list:
+      1 list.slash(1, 5) 1,
+      2 list.slash(1, 4) 2
+    ;
+    @each $item-order, $column, $row in $item-list {
+      .item-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
+    }
+  }
   .left-name {
     .text {
-      font-size: 10.5cqw;
-      bottom: 0;
+      font-size: 8.8cqw;
+      padding-top: 2.7cqw;
+      padding-left: 2.5cqw;
       .apple-logo {
         margin-right: 0;
       }
       .chip-name {
-        font-size: 1.15em;
-        letter-spacing: -0.04em;
+        font-size: 1.1em;
+        letter-spacing: -0.05em;
       }
     }
   }
-  .cpu-performance, .cpu-efficiency {
+  .cpu-performance {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cpu-efficiency {
     grid-template-columns: repeat(4, 1fr);
   }
-  .gpu, .neural-1 {
+  .gpu {
     grid-template-columns: repeat(5, 1fr);
   }
   .neural-1 {
-    gap: calc(var(--border-separator-width) / 1.5)!important
+    grid-template-columns: repeat(4, 1fr);
+    .core-neural-m1 {
+      .core-mid {
+        grid-template-columns: repeat(14, 1fr);
+      }
+    }
   }
   .secure-enclave-container {
+    gap: var(--a-border-separator-width)!important;
     grid-template-columns: repeat(4, 1fr);
     $container-item-list:
       1 list.slash(1, 5) list.slash(1, 3),
@@ -507,6 +543,12 @@
     }
     @include common.media(ipadpro11-portrait) {
       grid-template-columns: repeat(10, auto) 25.2%;
+    }
+    @include common.media(iphone12promax) {
+      grid-template-columns: repeat(10, auto) 25.3%;
+    }
+    @include common.media(iphone12mini) {
+      grid-template-columns: repeat(10, auto) 25.5%;
     }
     @for $i from 0 through 9 {
       .main-core-#{$i} {

@@ -1,4 +1,5 @@
 @use 'sass:list';
+@use 'common';
 
 .left-name {
   background-color: var(--chip-base-color);
@@ -30,14 +31,35 @@
   }
 }
 
-[class*="core-cpu"],
-[class*="core-neural"],
-[class*="core-bottom"],
-[class*="core-gpu"],
-[class*="core-media"],
-[class*="core-secure-enclave"]
- {
-  background-color: rgba(0, 0, 0, 0.1);
+@include common.chip-component-grid {
+  background-color: var(--chip-overlay);
+}
+
+.core-cpu-performance-a15 {
+  display: grid;
+  grid-template-columns: auto repeat(5, 2.3cqw) auto;
+  grid-template-rows: 2.3cqw auto repeat(4, 2.3cqw);
+  gap: var(--border-item-width);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  $core-item-list:
+    1 list.slash(1, 8) 4,
+    2 list.slash(1, 8) 5,
+    3 list.slash(1, 8) 6,
+    4 1 list.slash(1, 4),
+    5 2 list.slash(1, 4),
+    6 6 list.slash(1, 4),
+    7 7 list.slash(1, 4),
+    8 list.slash(3, 6) 1,
+    9 list.slash(3, 6) 3
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
 }
 
 .core-cpu-performance-m1 {
@@ -796,7 +818,7 @@
   display: grid;
   grid-template-columns:repeat(2, 11%) auto repeat(2, 11%);
   grid-template-rows: auto repeat(4, 1%) 4.5% repeat(4, 1%) 4.5% repeat(4, 1%) auto;
-  gap: var(--a-border-item-width);
+  gap: var(--border-item-width);
   > [class*="core-"] {
     background-color: var(--chip-base-color);
   }
@@ -1032,6 +1054,38 @@
   }
 }
 
+.core-media-a15-1 {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 8% repeat(14, 2%) repeat(4, auto);
+  gap: var(--border-item-width);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  .core-1 {
+    background-color: transparent;
+  }
+  $core-item-list:
+    1 list.slash(1, 3) 1,
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+  .core-side {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(43, 1fr);
+    gap: var(--border-item-width);
+    > [class*="core-side-"] {
+      background-color: var(--chip-base-color);
+    }
+  }
+}
+
 .core-media-m2-1 {
   height: 100%;
   display: grid;
@@ -1218,6 +1272,17 @@
         grid-row: $row;
       }
     }
+  }
+}
+
+.core-media-a15-2 {
+  height: 100%;
+  display: grid;
+  grid-template-columns: auto 32%;
+  grid-template-rows: 6% repeat(27, auto);
+  gap: var(--border-item-width);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
   }
 }
 

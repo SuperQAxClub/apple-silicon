@@ -14,19 +14,19 @@ export const AppleA15:FC = () => {
   }
 
   const CpuPerformance:FC = () => {
-    const coreCount = 4;
+    const coreCount = 2;
     let coreCountArray:string[] = [];
     for (let index = 0; index < coreCount; index++) {
       coreCountArray.push("a");
     }
     const CpuCore:FC = () => {
-      const coreGridCount = 11;
+      const coreGridCount = 12;
       let coreGridCountArray:number[] = [];
       for (let index = 1; index <= coreGridCount; index++) {
         coreGridCountArray.push(index);
       }
       return (
-        <div className="core-cpu-performance-m1">
+        <div className="core-cpu-performance-a15">
           {coreGridCountArray.map((item, index) => (
             <div className={`core-${item}`} key={`cpuPerfCore${index}`}></div>
           ))}
@@ -72,7 +72,7 @@ export const AppleA15:FC = () => {
   }
 
   const NeuralEngine1:FC = () => {
-    const coreCount = 16;
+    const coreCount = 4;
     let coreCountArray:string[] = [];
     for (let index = 0; index < coreCount; index++) {
       coreCountArray.push("a");
@@ -83,7 +83,7 @@ export const AppleA15:FC = () => {
       for (let index = 1; index <= coreGridCount; index++) {
         coreGridCountArray.push(index);
       }
-      const coreMidGridCount = 24;
+      const coreMidGridCount = 84;
       let coreMidGridCountArray:number[] = [];
       for (let index = 1; index <= coreMidGridCount; index++) {
         coreMidGridCountArray.push(index);
@@ -138,6 +138,67 @@ export const AppleA15:FC = () => {
         {coreCountArray.map((_item, index) => (
           <Core key={`gpu${index}`} />
         ))}
+      </div>
+    )
+  }
+
+  const Media1:FC = () => {
+    const Core:FC = () => {
+      const coreGridCount = 37;
+      let coreGridCountArray:number[] = [];
+      for (let index = 1; index <= coreGridCount; index++) {
+        coreGridCountArray.push(index);
+      }
+      const coreSideGridCount = 43;
+      let coreSideGridCountArray:number[] = [];
+      for (let index = 1; index <= coreSideGridCount; index++) {
+        coreSideGridCountArray.push(index);
+      }
+      return (
+        <div className="core-media-a15-1">
+          {coreGridCountArray.map((item, index) => (
+            <div className={`core-${item}`} key={`secureCore${index}`}>
+              {item === 1 ? (
+                <div className="core-side">
+                  {coreSideGridCountArray.map((item1, index1) => (
+                    <div className={`core-side-${item1}`} key={`secureCore${index1}`}></div>
+                  ))}
+                </div>
+              ) : ""}
+            </div>
+          ))}
+        </div>
+      )
+    }
+    return (
+      <div className="media">
+        <Core />
+      </div>
+    )
+  }
+
+  const Media2:FC = () => {
+    const Core:FC = () => {
+      const coreGridCount = 56;
+      let coreGridCountArray:number[] = [];
+      for (let index = 1; index <= coreGridCount; index++) {
+        coreGridCountArray.push(index);
+      }
+      return (
+        <div className="core-media-a15-2">
+          {coreGridCountArray.map((item, index) => (
+            <div className={`core-${item}`} key={`secureCore${index}`}>
+              {item === 1 ? (
+                <div className="core-side"></div>
+              ) : ""}
+            </div>
+          ))}
+        </div>
+      )
+    }
+    return (
+      <div className="media">
+        <Core />
       </div>
     )
   }
@@ -436,22 +497,42 @@ export const AppleA15:FC = () => {
       <div className="main-container frame-a15">
         <div className="chip-frame">
           <div className="chip-item-1">
-            
+            <div className="top-left-grid">
+              <div className="item-1">
+                <ChipName />
+              </div>
+              <div className="item-2">
+                <CpuPerformance />
+              </div>
+              <div className="item-3">
+                <CpuEfficiency />
+              </div>
+            </div>
           </div>
           <div className="chip-item-2">
             <Gpu />
           </div>
           <div className="chip-item-3">
-            
+            <div className="bottom-left-grid">
+              <div className="item-1">
+                <NeuralEngine1 />
+              </div>
+              <div className="item-2">
+                <Media1 />
+              </div>
+              <div className="item-3">
+                <Media2 />
+              </div>
+            </div>
           </div>
           <div className="chip-item-4">
-
+            <SecureEnclaveContainer />
           </div>
           <div className="chip-item-5">
-
+            <SecureEnclave2 />
           </div>
           <div className="chip-item-6">
-
+            <SecureEnclave1 />
           </div>
         </div>
       </div>

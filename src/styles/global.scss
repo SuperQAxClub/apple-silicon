@@ -93,7 +93,6 @@ $grad-list:
   --border-separator-width: 5px;
   --border-item-width: 1px;
   --a-border-separator-width: 8px;
-  --a-border-grid-separator-width: 4px;
   --a-border-item-width: 2px;
 }
 //---Premade
@@ -356,6 +355,7 @@ $grid-list: 'fullhd' 'fullhd' 'screen and (max-width: 2000px)',
 
 .chip-bg {
   --chip-base-color: #fff;
+  --chip-overlay: transparent;
   background-color: #000;
   color: var(--chip-base-color);
   width: 100vw;
@@ -365,6 +365,7 @@ $grid-list: 'fullhd' 'fullhd' 'screen and (max-width: 2000px)',
   place-items: center;
   &.dark-bg {
     --chip-base-color: #000;
+    --chip-overlay: rgba(0, 0, 0, 0.1);
   }
   .main-container {
     width: min(95vw, calc(90vh * var(--ratio-width, 1) / var(--ratio-height, 1)));
@@ -394,17 +395,23 @@ $grid-list: 'fullhd' 'fullhd' 'screen and (max-width: 2000px)',
   .chip-frame {
     --border-separator-width: 3px;
     --border-item-width: 1px;
+    --a-border-separator-width: 5px;
+    --a-border-item-width: 2px;
   }
 }
 @container (max-width: 500px) {
   .chip-frame {
     --border-separator-width: 2px;
     --border-item-width: 1px;
+    --a-border-separator-width: 4px;
+    --a-border-item-width: 1.5px;
   }
 }
-@container (max-width: 300px) {
+@container (max-width: 400px) {
   .chip-frame {
     --border-separator-width: 1px;
     --border-item-width: 0.5px;
+    --a-border-separator-width: 3px;
+    --a-border-item-width: 1px;
   }
 }

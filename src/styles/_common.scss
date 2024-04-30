@@ -46,3 +46,15 @@ $media-list: 'desktop' 'screen and (min-width: 1000px)',
     @content;
   }
 }
+@mixin chip-component-grid() {
+  [class*="core-cpu"],
+  [class*="core-neural"],
+  [class*="core-bottom"],
+  [class*="core-gpu"],
+  [class*="core-media"],
+  [class*="core-secure-enclave"],
+  [class*="core-mid"],
+  [class*="core-side"] {
+    @content
+  }
+}
