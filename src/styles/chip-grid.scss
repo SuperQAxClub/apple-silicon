@@ -3,7 +3,6 @@
 
 .left-name {
   background-color: var(--chip-base-color);
-  color: #fff;
   margin: 0;
   line-height: 1;
   height: 100%;
@@ -17,7 +16,7 @@
     width: 100cqw;
     height: 100cqh;
     background-clip: text;
-    -webkit-text-fill-color:transparent;
+    color:transparent;
     pointer-events: none;
     .apple-logo {
       line-height: 1;

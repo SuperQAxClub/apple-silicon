@@ -6,6 +6,8 @@ export const MainPage:FC = () => {
       Apple Silicon on React (under construction)
       <br /><a href="#/a14">Apple A14 Bionic</a>
       <br /><a href="#/a15">Apple A15 Bionic</a>
+      <br /><a href="#/a16">Apple A16 Bionic</a>
+      <br /><a href="#/a17pro">Apple A17 Pro</a>
       <br /><a href="#/m1">Apple M1</a>
       <br /><a href="#/m1pro">Apple M1 Pro</a>
       <br /><a href="#/m1max">Apple M1 Max</a>
