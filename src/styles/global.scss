@@ -92,6 +92,9 @@ $grad-list:
   --text-color: #000;
   --border-separator-width: 5px;
   --border-item-width: 1px;
+  --a-border-separator-width: 8px;
+  --a-border-item-width: 2px;
+  --chip-overlay: rgba(0, 0, 0, 0.1);
 }
 //---Premade
 @mixin center {
@@ -362,18 +365,13 @@ $grid-list: 'fullhd' 'fullhd' 'screen and (max-width: 2000px)',
   place-items: center;
   &.dark-bg {
     --chip-base-color: #000;
-    .left-name {
-      background-color: #000;
-      color: #fff;
-      mix-blend-mode: multiply;
-    }
   }
   .main-container {
     width: min(95vw, calc(90vh * var(--ratio-width, 1) / var(--ratio-height, 1)));
     width: min(95vw, calc(95dvh * var(--ratio-width, 1) / var(--ratio-height, 1)));
     max-width: 1100px;
     aspect-ratio: var(--ratio-width) / var(--ratio-height);
-    container-type: inline-size;
+    container-type: size;
     .chip-frame, .ultra-chip-frame {
       padding: 2.5cqw;
       width: 100%;
@@ -381,25 +379,8 @@ $grid-list: 'fullhd' 'fullhd' 'screen and (max-width: 2000px)',
       position: relative;
       box-sizing: border-box;
       display: grid;
-      gap: var(--border-separator-width);
     }
-    .cpu-performance,
-    .cpu-efficiency,
-    .neural-1,
-    .neural-2,
-    .bottom-1,
-    .bottom-2,
-    .bottom-3,
-    .gpu,
-    .gpu-2,
-    .gpu-landscape,
-    .media,
-    .media-1,
-    .media-2,
-    .media-3,
-    .media-4,
-    .secure-enclave,
-    .secure-enclave-container {
+    @include common.chip-component() {
       width: 100%;
       height: 100%;
       box-sizing: border-box;
@@ -413,17 +394,23 @@ $grid-list: 'fullhd' 'fullhd' 'screen and (max-width: 2000px)',
   .chip-frame {
     --border-separator-width: 3px;
     --border-item-width: 1px;
+    --a-border-separator-width: 5px;
+    --a-border-item-width: 2px;
   }
 }
 @container (max-width: 500px) {
   .chip-frame {
     --border-separator-width: 2px;
     --border-item-width: 1px;
+    --a-border-separator-width: 4px;
+    --a-border-item-width: 1.5px;
   }
 }
-@container (max-width: 300px) {
+@container (max-width: 400px) {
   .chip-frame {
     --border-separator-width: 1px;
     --border-item-width: 0.5px;
+    --a-border-separator-width: 3px;
+    --a-border-item-width: 1px;
   }
 }

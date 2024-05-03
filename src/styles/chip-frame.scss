@@ -1,11 +1,336 @@
 @use 'common';
 @use 'sass:list';
 
+.frame-a14 {
+  --ratio-width: 1;
+  --ratio-height: 1;
+  --background: linear-gradient(to top left, #191b25, transparent, #8191b0), linear-gradient(to top right, #424b5c, transparent, #54666c), #536b6e;
+  @include common.chip-component-grid() {
+    gap: var(--a-border-item-width);
+  }
+  .chip-frame {
+    background: var(--background);
+    gap: var(--a-border-separator-width);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    $frame-item-list:
+      1 list.slash(1, 3) list.slash(1, 3),
+      2 list.slash(3, 5) list.slash(1, 3),
+      3 list.slash(1, 3) list.slash(3, 5),
+      4 3 3,
+      5 4 3,
+      6 list.slash(3, 5) 4,
+    ;
+    @each $item-order, $column, $row in $frame-item-list {
+      .chip-item-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
+    }
+  }
+  .top-left-grid {
+    height: 100%;
+    display: grid;
+    gap: var(--border-separator-width);
+    grid-template-rows: 33% auto 27%;
+  }
+  .bottom-left-grid {
+    height: 100%;
+    display: grid;
+    gap: var(--border-separator-width);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    // > [class*="item-"] {
+    //   background-color: var(--chip-base-color);
+    // }
+    $item-list:
+      1 list.slash(1, 5) 1,
+      2 list.slash(1, 4) 2
+    ;
+    @each $item-order, $column, $row in $item-list {
+      .item-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
+    }
+  }
+  .left-name {
+    .text {
+      font-size: 8.8cqw;
+      .apple-logo {
+        font-size: 0.6em;
+        padding-top: 3.5cqw;
+        padding-left: 44cqw;
+      }
+      .chip-name {
+        font-weight: 500;
+        font-size: 1.9em;
+        padding-top: 2cqw;
+        padding-left: 5cqw;
+      }
+    }
+  }
+  .cpu-performance {
+    grid-template-columns: repeat(2, 1fr);
+    .core-cpu-performance-m1 {
+      grid-template-columns: auto repeat(5, 2.3cqw) auto;
+      grid-template-rows: auto 2.3cqw 45% 2.3cqw auto;
+    }
+  }
+  .cpu-efficiency {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .gpu {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .neural-1 {
+    grid-template-columns: repeat(4, 1fr);
+    .core-neural-m1 {
+      .core-mid {
+        grid-template-columns: repeat(14, 1fr);
+      }
+    }
+  }
+  .secure-enclave-container {
+    gap: var(--a-border-separator-width)!important;
+    grid-template-columns: repeat(4, 1fr);
+    $container-item-list:
+      1 list.slash(1, 5) list.slash(1, 3),
+      2 list.slash(1, 3) list.slash(3, 5),
+      3 3 3,
+      4 4 3,
+      5 list.slash(3, 5) 4
+    ;
+    @each $item-order, $column, $row in $container-item-list {
+      .container-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
+    }
+  }
+}
+
+.frame-a15 {
+  --ratio-width: 1;
+  --ratio-height: 1;
+  // --background: linear-gradient(to top right, #62b8e5, #5e9bde, #7c67db 45%, #da65e8, #e94e99);
+  --background: linear-gradient(to bottom right, #a1f995, #219fab, #035ca0);
+  --chip-base-color: #13213b;
+  @include common.chip-component-grid() {
+    gap: var(--a-border-item-width);
+  }
+  .chip-frame {
+    background: var(--background);
+    gap: var(--a-border-separator-width);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    $frame-item-list:
+      1 list.slash(1, 3) list.slash(1, 3),
+      2 list.slash(3, 5) list.slash(1, 3),
+      3 list.slash(1, 3) list.slash(3, 5),
+      4 3 3,
+      5 4 3,
+      6 list.slash(3, 5) 4,
+    ;
+    @each $item-order, $column, $row in $frame-item-list {
+      .chip-item-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
+    }
+  }
+  .top-left-grid {
+    height: 100%;
+    display: grid;
+    gap: var(--border-separator-width);
+    grid-template-rows: 26% auto 27%;
+  }
+  .bottom-left-grid {
+    height: 100%;
+    display: grid;
+    gap: var(--border-separator-width);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    // > [class*="item-"] {
+    //   background-color: var(--chip-base-color);
+    // }
+    $item-list:
+      1 list.slash(1, 5) 1,
+      2 list.slash(1, 4) 2
+    ;
+    @each $item-order, $column, $row in $item-list {
+      .item-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
+    }
+  }
+  .left-name {
+    .text {
+      font-size: 8.8cqw;
+      padding-top: 2.7cqw;
+      padding-left: 2.5cqw;
+      .apple-logo {
+        margin-right: 0;
+      }
+      .chip-name {
+        font-size: 1.1em;
+        letter-spacing: -0.05em;
+      }
+    }
+  }
+  .cpu-performance {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cpu-efficiency {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .gpu {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .neural-1 {
+    grid-template-columns: repeat(4, 1fr);
+    .core-neural-m1 {
+      .core-mid {
+        grid-template-columns: repeat(14, 1fr);
+      }
+    }
+  }
+  .secure-enclave {
+    .core-secure-enclave-m1-1 {
+      grid-template-rows: repeat(2, 12%) repeat(3, 5%) auto repeat(3, 5%) repeat(2, 12%);
+      .core-side {
+        grid-template-rows: repeat(10, auto) 10% repeat(9, auto);
+      }
+    }
+  }
+  .secure-enclave-container {
+    gap: var(--a-border-separator-width)!important;
+    grid-template-columns: repeat(4, 1fr);
+    $container-item-list:
+      1 list.slash(1, 5) list.slash(1, 3),
+      2 list.slash(1, 3) list.slash(3, 5),
+      3 3 3,
+      4 4 3,
+      5 list.slash(3, 5) 4
+    ;
+    @each $item-order, $column, $row in $container-item-list {
+      .container-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
+    }
+  }
+}
+
+.frame-a16 {
+  --ratio-width: 1;
+  --ratio-height: 1;
+  // --background: linear-gradient(to top left, #a6c5e5, #33353a);
+  --background: linear-gradient(to bottom, #edb6f3, #973fcc, #47169f);
+  --chip-base-color: #14012e;
+  @include common.chip-component-grid() {
+    gap: var(--a-border-item-width);
+  }
+  .chip-frame {
+    background: var(--background);
+    gap: var(--a-border-separator-width);
+    grid-template-columns: repeat(2, 1fr) 0.74fr 1.26fr;
+    grid-template-rows: 13cqh 32cqh 13cqh 10cqh auto;
+    // > [class*="chip-item-"] {
+    //   background-color: var(--chip-base-color);
+    // }
+    $frame-item-list:
+      1 list.slash(1, 3) 1,
+      2 list.slash(1, 3) list.slash(2, 4),
+      3 list.slash(1, 3) list.slash(4, 6),
+      4 list.slash(3, 5) list.slash(1, 3),
+      5 3 3,
+      6 3 4,
+      7 4 list.slash(3, 5),
+      8 list.slash(3, 5) 5
+    ;
+    @each $item-order, $column, $row in $frame-item-list {
+      .chip-item-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
+    }
+  }
+  .top-left-grid {
+    height: 100%;
+    display: grid;
+    gap: var(--border-separator-width);
+    grid-template-rows: auto 35%;
+  }
+  .bottom-left-grid {
+    height: 100%;
+    display: grid;
+    gap: var(--border-separator-width);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    $item-list:
+      1 list.slash(1, 5) 1,
+      2 list.slash(1, 4) 2
+    ;
+    @each $item-order, $column, $row in $item-list {
+      .item-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
+    }
+  }
+  .left-name {
+    .text {
+      font-size: 8.8cqw;
+      padding-top: 2.7cqw;
+      padding-left: 2.5cqw;
+      .apple-logo {
+        margin-right: 0;
+      }
+      .chip-name {
+        font-size: 1.1em;
+        letter-spacing: -0.05em;
+      }
+    }
+  }
+  .cpu-performance {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cpu-efficiency {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .gpu {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .neural-1 {
+    grid-template-columns: repeat(8, 1fr);
+  }
+  .secure-enclave-container {
+    gap: var(--a-border-separator-width)!important;
+    grid-template-columns: 60% auto;
+    grid-template-rows: 40% auto;
+    $container-item-list:
+      1 1 list.slash(1, 3),
+      2 2 1,
+      3 2 2,
+    ;
+    @each $item-order, $column, $row in $container-item-list {
+      .container-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
+    }
+  }
+}
+
 .frame-m1 {
   --ratio-width: 1;
   --ratio-height: 1;
+  --background: linear-gradient(to top right, #b6304b, rgba(160, 128, 69, 0), #3d81e4), linear-gradient(to top left, #2f289a, rgba(160, 128, 69, 0), #da7a64), rgba(160, 128, 69, 1);
   .chip-frame {
-    background: linear-gradient(to top right, #b6304b, rgba(160, 128, 69, 0), #3d81e4), linear-gradient(to top left, #2f289a, rgba(160, 128, 69, 0), #da7a64), rgba(160, 128, 69, 1);
+    background: var(--background);
+    gap: var(--border-separator-width);
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 16% 34% 20% 6% auto;
     $frame-item-list:
@@ -27,8 +352,9 @@
   }
   .left-name {
     .text {
+      padding-top: 2.9cqw;
+      padding-left: 2.2cqw;
       font-size: 10.5cqw;
-      bottom: 0;
       .apple-logo {
         margin-right: 0;
       }
@@ -67,10 +393,12 @@
 .frame-m1pro {
   --ratio-width: 1.42;
   --ratio-height: 1;
-  background: linear-gradient(to top left, #429df8, rgba(74, 189, 243, 0), #89dbf3), linear-gradient(to top right, #cfe9ef, rgba(74, 189, 243, 0), #3663ec), rgba(74, 189, 243, 1);
+  --background: linear-gradient(to top left, #429df8, rgba(74, 189, 243, 0), #89dbf3), linear-gradient(to top right, #cfe9ef, rgba(74, 189, 243, 0), #3663ec), rgba(74, 189, 243, 1);
+  background: var(--background);
   .chip-frame {
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 14% 35% 7% repeat(2, auto);
+    gap: var(--border-separator-width);
     $frame-item-list:
       1 list.slash(1, 3) 1,
       2 list.slash(1, 3) 2,
@@ -97,6 +425,8 @@
   }
   .left-name {
     .text {
+      padding-top: 2.8cqw;
+      padding-left: 2.4cqw;
       font-size: 6.3cqw;
       bottom: 0;
       .apple-logo {
@@ -145,11 +475,13 @@
 .frame-m2max, .frame-m1max {
   --ratio-width: 0.92;
   --ratio-height: 1;
-  background: linear-gradient(to top right, #d8b5ef, rgba(148, 94, 250, 0), #3e02f0), linear-gradient(to top left, #6b28f1, rgba(148, 94, 250, 0), #a170ee), rgba(148, 94, 250, 1);
+  --background: linear-gradient(to top right, #d8b5ef, rgba(148, 94, 250, 0), #3e02f0), linear-gradient(to top left, #6b28f1, rgba(148, 94, 250, 0), #a170ee), rgba(148, 94, 250, 1);
+  background: var(--background);
 }
 .frame-item-m1-max {
   height: 100%;
   .chip-frame {
+    gap: var(--border-separator-width);
     grid-template-columns: repeat(4, 20%) auto;
     grid-template-rows: 9.8% 22.6% 4% 12.4% 12.4% auto 4% 26cqw;
     $frame-item-list:
@@ -181,8 +513,8 @@
   .left-name {
     .text {
       font-size: 6.7cqw;
-      left: 0.3cqw;
-      bottom: 0.3cqw;
+      padding-left: 2.5cqw;
+      padding-top: 3cqw;
       .apple-logo {
         margin-right: 0.7cqw;
       }
@@ -232,8 +564,10 @@
 .frame-m1ultra {
   --ratio-width: 0.43;
   --ratio-height: 1;
-  background: linear-gradient(to top left, #f2c8af, rgba(158, 158, 180, 0), #a39cd0), linear-gradient(to top right, #e299ab, rgba(158, 158, 180, 0), #bdced3), rgba(158, 158, 180, 1);
+  --background: linear-gradient(to top left, #f2c8af, rgba(158, 158, 180, 0), #a39cd0), linear-gradient(to top right, #e299ab, rgba(158, 158, 180, 0), #bdced3), rgba(158, 158, 180, 1);
+  background: var(--background);
   .ultra-chip-frame {
+    gap: var(--border-separator-width);
     grid-template-rows: auto 5% auto;
     grid-template-columns: auto;
     .chip-main-reverse {
@@ -242,8 +576,8 @@
     .left-name {
       .text {
         font-size: 6.7cqw;
-        left: 1cqw;
-        bottom: 1cqw;
+        padding-top: 48cqh;
+        padding-left: 2.8cqw;
         .apple-logo {
           margin-right: 0.7cqw;
         }
@@ -264,8 +598,10 @@
 .frame-m2 {
   --ratio-width: 1.11;
   --ratio-height: 1;
+  --background: linear-gradient(135deg, rgba(253,183,46,1) 0%, rgba(247,125,71,1) 25%, rgba(210,60,48,1) 50%, rgba(166,0,157,1) 75%, rgba(113,1,154,1) 100%);
   .chip-frame {
-    background: linear-gradient(135deg, rgba(253,183,46,1) 0%, rgba(247,125,71,1) 25%, rgba(210,60,48,1) 50%, rgba(166,0,157,1) 75%, rgba(113,1,154,1) 100%);
+    background: var(--background);
+    gap: var(--border-separator-width);
     grid-template-columns: 45% auto;
     grid-template-rows: 16% 30% auto repeat(5, 7%);
     .chip-item-1 {
@@ -323,6 +659,12 @@
       }
     }
   }
+  .left-name {
+    .text {
+      padding-top: 2.3cqw;
+      padding-left: 2.2cqw;
+    }
+  }
   .cpu-performance {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -351,8 +693,10 @@
 .frame-m2pro {
   --ratio-width: 1.42;
   --ratio-height: 1;
-  background: linear-gradient(to top left, #429df8, rgba(74, 189, 243, 0), #89dbf3), linear-gradient(to top right, #cfe9ef, rgba(74, 189, 243, 0), #3663ec), rgba(74, 189, 243, 1);
+  --background: linear-gradient(to top left, #429df8, rgba(74, 189, 243, 0), #89dbf3), linear-gradient(to top right, #cfe9ef, rgba(74, 189, 243, 0), #3663ec), rgba(74, 189, 243, 1);
+  background: var(--background);
   .chip-frame {
+    gap: var(--border-separator-width);
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 14% 28% 14% repeat(2, auto);
     .chip-item-1 {
@@ -395,7 +739,8 @@
   .left-name {
     .text {
       font-size: 6.3cqw;
-      bottom: 0;
+      padding-top: 2.6cqw;
+      padding-left: 2.8cqw;
       .apple-logo {
         margin-right: 0.7cqw;
       }
@@ -418,6 +763,12 @@
     }
     @include common.media(ipadpro11-portrait) {
       grid-template-columns: repeat(10, auto) 25.2%;
+    }
+    @include common.media(iphone12promax) {
+      grid-template-columns: repeat(10, auto) 25.3%;
+    }
+    @include common.media(iphone12mini) {
+      grid-template-columns: repeat(10, auto) 25.5%;
     }
     @for $i from 0 through 9 {
       .main-core-#{$i} {
@@ -462,6 +813,7 @@
 .frame-item-m2-max {
   height: 100%;
   .chip-frame {
+    gap: var(--border-separator-width);
     grid-template-columns: repeat(4, 20%) auto;
     grid-template-rows: 9.8% 19% 7.6% 12.4% 12.4% auto 4% 26cqw;
     .chip-item-1 {
@@ -520,8 +872,8 @@
   .left-name {
     .text {
       font-size: 6.7cqw;
-      left: 0.3cqw;
-      bottom: 0.3cqw;
+      padding-top: 3cqw;
+      padding-left: 2.5cqw;
       .apple-logo {
         margin-right: 0.7cqw;
       }
@@ -571,8 +923,10 @@
 .frame-m2ultra {
   --ratio-width: 0.43;
   --ratio-height: 1;
-  background: linear-gradient(50deg, #f0c68a 20%, #da70a0 40%, #9360d7 65%, #71c1fe 80%);
+  --background: linear-gradient(50deg, #f0c68a 20%, #da70a0 40%, #9360d7 65%, #71c1fe 80%);
+  background: var(--background);
   .ultra-chip-frame {
+    gap: var(--border-separator-width);
     grid-template-rows: auto 5% auto;
     grid-template-columns: auto;
     .chip-main-reverse {
@@ -581,8 +935,8 @@
     .left-name {
       .text {
         font-size: 6.7cqw;
-        left: 1cqw;
-        bottom: 1cqw;
+        padding-top: 48cqh;
+        padding-left: 3cqw;
         .apple-logo {
           margin-right: 0.7cqw;
         }
@@ -606,8 +960,10 @@
 .frame-m3 {
   --ratio-width: 1.19;
   --ratio-height: 1;
+  --background: linear-gradient(to top right, #97cec2, #7db1ba 70%, #5885ae);
   .chip-frame {
-    background: linear-gradient(to top right, #97cec2, #7db1ba 70%, #5885ae);
+    background: var(--background);
+    gap: var(--border-separator-width);
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 16% 33% 20% repeat(2, auto);
     $frame-item-list:
@@ -634,7 +990,8 @@
   .left-name {
     .text {
       font-size: 8.8cqw;
-      bottom: 0;
+      padding-top: 2.7cqw;
+      padding-left: 2.4cqw;
       .apple-logo {
         margin-right: 0;
       }
@@ -678,8 +1035,10 @@
 .frame-m3-pro {
   --ratio-width: 0.85;
   --ratio-height: 1;
+  --background: linear-gradient(to top right, #6cb4f8, #4a8ff7, #2352f4);
   .chip-frame {
-    background: linear-gradient(to top right, #6cb4f8, #4a8ff7, #2352f4);
+    background: var(--background);
+    gap: var(--border-separator-width);
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: 10% 26% repeat(3, 10%) auto;
     // > [class*="chip-item-"] {
@@ -719,7 +1078,8 @@
   .left-name {
     .text {
       font-size: 7.5cqw;
-      bottom: 0.1cqw;
+      padding-top: 3cqw;
+      padding-left: 2.5cqw;
       .apple-logo {
         margin-right: 0.5cqw;
       }
@@ -773,11 +1133,13 @@
 .frame-m3-max {
   --ratio-width: 0.97;
   --ratio-height: 1;
-  background: linear-gradient(to top right, #af8af7, #986df2, #7b36e9);
+  --background: linear-gradient(to top right, #af8af7, #986df2, #7b36e9);
+  background: var(--background);
 }
 .frame-item-m3-max {
   height: 100%;
   .chip-frame {
+    gap: var(--border-separator-width);
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: 8% repeat(6, 8%) auto;
     // > [class*="chip-item-"] {
@@ -835,7 +1197,8 @@
   .left-name {
     .text {
       font-size: 5.3cqw;
-      bottom: 0.1cqw;
+      padding-top: 2.7cqw;
+      padding-left: 2.6cqw;
       .apple-logo {
         margin-right: 0.5cqw;
       }

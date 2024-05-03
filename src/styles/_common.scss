@@ -25,3 +25,36 @@ $media-list: 'desktop' 'screen and (min-width: 1000px)',
     }
   }
 }
+@mixin chip-component() {
+  .cpu-performance,
+  .cpu-efficiency,
+  .neural-1,
+  .neural-2,
+  .bottom-1,
+  .bottom-2,
+  .bottom-3,
+  .gpu,
+  .gpu-2,
+  .gpu-landscape,
+  .media,
+  .media-1,
+  .media-2,
+  .media-3,
+  .media-4,
+  .secure-enclave,
+  .secure-enclave-container {
+    @content;
+  }
+}
+@mixin chip-component-grid() {
+  [class*="core-cpu"],
+  [class*="core-neural"],
+  [class*="core-bottom"],
+  [class*="core-gpu"],
+  [class*="core-media"],
+  [class*="core-secure-enclave"],
+  [class*="core-mid"],
+  [class*="core-side"] {
+    @content
+  }
+}
