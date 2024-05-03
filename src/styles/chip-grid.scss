@@ -61,6 +61,34 @@
   }
 }
 
+.core-cpu-performance-a16 {
+  display: grid;
+  grid-template-columns: 20% 10% repeat(8, auto) 10% 20%;
+  grid-template-rows: 12% repeat(2, 5%) auto repeat(2, 5%) 12%;
+  gap: var(--border-item-width);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  $core-item-list:
+    1 list.slash(1, 13) 1,
+    2 list.slash(1, 13) 7,
+    3 1 list.slash(2, 7),
+    4 2 list.slash(2, 7),
+    5 11 list.slash(2, 7),
+    6 12 list.slash(2, 7),
+    7 list.slash(3, 11) 2,
+    8 list.slash(3, 11) 3,
+    9 list.slash(3, 11) 5,
+    10 list.slash(3, 11) 6
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+}
+
 .core-cpu-performance-m1 {
   display: grid;
   grid-template-columns: 20% repeat(5, auto) 20%;
@@ -206,6 +234,49 @@
   .core-8 {
     grid-column: 3/8;
     grid-row: 4;
+  }
+}
+
+.core-cpu-efficiency-a16 {
+  display: grid;
+  grid-template-columns: 20% 3% repeat(2, 5%) auto repeat(2, 5%) 3% 20%;
+  grid-template-rows: 15% 15% repeat(3, auto) 15% 15%;
+  gap: var(--border-item-width);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  .core-1, .core-2 {
+    background-color: transparent;
+  }
+  $core-item-list:
+    1 2 list.slash(2, 7),
+    2 8 list.slash(2, 7),
+    3 list.slash(1, 10) 1,
+    4 list.slash(1, 10) 7,
+    5 1 list.slash(1, 3),
+    6 9 list.slash(1, 3),
+    7 1 list.slash(6, 8),
+    8 9 list.slash(6, 8),
+    9 list.slash(2, 9) 2,
+    10 list.slash(2, 9) 6,
+    11 3 list.slash(3, 6),
+    12 4 list.slash(3, 6),
+    13 6 list.slash(3, 6),
+    14 7 list.slash(3, 6)
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+  .core-side {
+    height: 100%;
+    display: grid;
+    gap: var(--border-item-width);
+    > [class*="core-side-"] {
+      background-color: var(--chip-base-color);
+    }
   }
 }
 
@@ -408,6 +479,37 @@
     9 4 list.slash(2, 7),
     10 5 list.slash(2, 7),
     11 6 list.slash(2, 7),
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+}
+
+.core-neural-a16 {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 17% 8% repeat(4, auto) 8% 17%;
+  gap: var(--border-item-width);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  $core-item-list:
+    1 list.slash(1, 4) 2,
+    2 list.slash(4, 7) 2,
+    3 list.slash(1, 4) 7,
+    4 list.slash(4, 7) 7,
+    5 1 list.slash(2, 8),
+    6 6 list.slash(2, 8),
+    7 2 list.slash(3, 7),
+    8 5 list.slash(3, 7),
+    9 list.slash(3, 5) 3,
+    10 list.slash(3, 5) 4,
+    11 list.slash(3, 5) 5,
+    12 list.slash(3, 5) 6
   ;
   @each $item-order, $column, $row in $core-item-list {
     .core-#{$item-order} {
@@ -2063,6 +2165,77 @@
   }
 }
 
+.core-secure-enclave-a16-1 {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 12% auto repeat(2, 2%) 6%;
+  gap: var(--border-item-width);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  .core-1, .core-2 {
+    background-color: transparent;
+  }
+  .core-side {
+    height: 100%;
+    display: flex;
+    gap: var(--border-item-width);
+    > [class*="core-side-"] {
+      flex: 1;
+      background-color: var(--chip-base-color);
+    }
+  }
+  .core-mid {
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto 33% auto;
+    grid-template-rows: 15% 8% repeat(12, auto) 8% 15%;
+    gap: var(--border-item-width);
+    > [class*="core-mid-"] {
+      background-color: var(--chip-base-color);
+    }
+    .core-mid-1 {
+      background-color: transparent;
+    }
+    $core-mid-item-list:
+      1 2 list.slash(2, 16),
+      2 list.slash(1, 4) 1,
+      3 list.slash(1, 4) 16,
+      4 1 list.slash(1, 3),
+      5 3 list.slash(1, 3),
+      6 1 list.slash(15, 17),
+      7 3 list.slash(15, 17)
+    ;
+    @each $item-order, $column, $row in $core-mid-item-list {
+      .core-mid-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
+    }
+  }
+  .core-mid-center {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 2.2cqw) auto repeat(2, 2.2cqw);
+    gap: var(--border-item-width);
+    > [class*="core-mid-center-"] {
+      background-color: var(--chip-base-color);
+    }
+    $core-mid-center-item-list:
+      1 1 list.slash(1, 6),
+      2 2 list.slash(1, 6),
+      3 4 list.slash(1, 6),
+      4 5 list.slash(1, 6)
+    ;
+    @each $item-order, $column, $row in $core-mid-center-item-list {
+      .core-mid-center-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
+    }
+  }
+}
+
 .core-secure-enclave-m1-1 {
   height: 100%;
   display: grid;
@@ -2111,6 +2284,61 @@
       1 list.slash(1, 19) 1,
       2 list.slash(1, 19) 3,
       3 list.slash(1, 19) 5,
+    ;
+    @each $item-order, $column, $row in $core-mid-item-list {
+      .core-mid-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
+    }
+  }
+}
+
+.core-secure-enclave-a16-2 {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 13% auto 13%;
+  $core-item-list:
+    1 2 1,
+    2 1 1,
+    3 3 1
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+  .core-side {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--border-item-width);
+    > [class*="core-side-"] {
+      flex: 1;
+      background-color: var(--chip-base-color);
+    }
+  }
+  .core-mid {
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto repeat(4, 8%) auto;
+    grid-template-rows: auto 6% 3% repeat(4, 2%) 3% 6% auto;
+    gap: var(--border-item-width);
+    > [class*="core-mid-"] {
+      background-color: var(--chip-base-color);
+    }
+    $core-mid-item-list:
+      1 list.slash(1, 7) 2,
+      2 list.slash(1, 7) 3,
+      3 list.slash(1, 7) 8,
+      4 list.slash(1, 7) 9,
+      5 1 list.slash(4, 8),
+      6 6 list.slash(4, 8),
+      7 list.slash(2, 6) 4,
+      8 list.slash(2, 6) 5,
+      9 list.slash(2, 6) 6,
+      10 list.slash(2, 6) 7,
     ;
     @each $item-order, $column, $row in $core-mid-item-list {
       .core-mid-#{$item-order} {
@@ -2191,6 +2419,73 @@
   }
 }
 
+.core-secure-enclave-a16-3 {
+  height: 100%;
+  display: grid;
+  grid-template-columns: auto 39%;
+  grid-template-rows: 5% 18% auto;
+  gap: var(--border-item-width);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  .core-1, .core-2, .core-3 {
+    background-color: transparent;
+  }
+  $core-item-list:
+    1 1 2,
+    2 1 3,
+    3 2 3,
+    4 list.slash(1, 3)
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+  .core-side-top {
+    height: 100%;
+    display: flex;
+    gap: var(--border-item-width);
+    > [class*="core-side-"] {
+      flex: 1;
+      background-color: var(--chip-base-color);
+    }
+  }
+  .core-side-right {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--border-item-width);
+    > [class*="core-side-"] {
+      flex: 1;
+      background-color: var(--chip-base-color);
+    }
+  }
+  .core-mid {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: var(--border-item-width);
+    > [class*="core-mid-"] {
+      background-color: var(--chip-base-color);
+    }
+    $core-mid-item-list:
+      1 list.slash(1, 4) list.slash(1, 3),
+      2 list.slash(1, 4) list.slash(5, 7),
+      3 1 list.slash(3, 5),
+      4 3 list.slash(3, 5)
+    ;
+    @each $item-order, $column, $row in $core-mid-item-list {
+      .core-mid-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
+    }
+  }
+}
+
 .core-secure-enclave-m1-3 {
   height: 100%;
   display: grid;
@@ -2254,6 +2549,35 @@
   }
 }
 
+.core-secure-enclave-a16-4 {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(2, 10%) repeat(10, auto) repeat(2, 10%);
+  gap: var(--border-item-width);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  $core-item-list:
+    1 list.slash(1, 7) 1,
+    2 list.slash(1, 7) 14,
+    3 1 list.slash(2, 14),
+    4 6 list.slash(2, 14),
+    5 list.slash(2, 6) 2,
+    6 list.slash(2, 6) 13,
+    7 list.slash(3, 5) list.slash(3, 5),
+    8 list.slash(3, 5) list.slash(11, 13),
+    9 3 list.slash(5, 11),
+    10 4 list.slash(5, 11)
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+}
+
 .core-secure-enclave-m1-4 {
   height: 100%;
   display: grid;
@@ -2294,6 +2618,38 @@
   }
 }
 
+.core-secure-enclave-a16-5 {
+  height: 100%;
+  display: grid;
+  grid-template-columns: auto repeat(3, 17%);
+  gap: var(--border-item-width);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  .core-1 {
+    background-color: transparent;
+  }
+  $core-item-list:
+    1 3 list.slash(1, 3),
+    2 1 list.slash(1, 3),
+    3 2 list.slash(1, 3)
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+  .core-side {
+    height: 100%;
+    display: grid;
+    gap: var(--border-item-width);
+    > [class*="core-side-"] {
+      background-color: var(--chip-base-color);
+    }
+  }
+}
+
 .core-secure-enclave-m1-5 {
   height: 100%;
   display: grid;
@@ -2323,6 +2679,34 @@
     gap: var(--border-item-width);
     > [class*="core-side-"] {
       background-color: var(--chip-base-color);
+    }
+  }
+}
+
+.core-secure-enclave-a16-6 {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(8, auto);
+  grid-template-rows: repeat(2, auto) 35% repeat(2, auto);
+  gap: var(--border-item-width);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  $core-item-list:
+    1 list.slash(1, 5) 1,
+    2 list.slash(5, 9) 1,
+    3 list.slash(1, 5) 5,
+    4 list.slash(5, 9) 5,
+    5 list.slash(1, 9) 2,
+    6 list.slash(1, 9) 4,
+    7 1 list.slash(2, 5),
+    8 8 list.slash(2, 5),
+    9 list.slash(4, 6) 3
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
     }
   }
 }

@@ -94,6 +94,7 @@ $grad-list:
   --border-item-width: 1px;
   --a-border-separator-width: 8px;
   --a-border-item-width: 2px;
+  --chip-overlay: rgba(0, 0, 0, 0.1);
 }
 //---Premade
 @mixin center {
@@ -355,7 +356,6 @@ $grid-list: 'fullhd' 'fullhd' 'screen and (max-width: 2000px)',
 
 .chip-bg {
   --chip-base-color: #fff;
-  --chip-overlay: transparent;
   background-color: #000;
   color: var(--chip-base-color);
   width: 100vw;
@@ -365,7 +365,6 @@ $grid-list: 'fullhd' 'fullhd' 'screen and (max-width: 2000px)',
   place-items: center;
   &.dark-bg {
     --chip-base-color: #000;
-    --chip-overlay: rgba(0, 0, 0, 0.1);
   }
   .main-container {
     width: min(95vw, calc(90vh * var(--ratio-width, 1) / var(--ratio-height, 1)));
