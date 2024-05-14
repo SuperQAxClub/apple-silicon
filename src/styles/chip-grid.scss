@@ -89,6 +89,44 @@
   }
 }
 
+.core-cpu-performance-a17pro {
+  display: grid;
+  grid-template-columns: 8% 17% 8% repeat(6, auto) 8% 17% 8%;
+  grid-template-rows: 12% 5% 12% repeat(2, auto) 12% 5% 12%;
+  gap: var(--border-item-width);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  $core-item-list:
+    1 list.slash(1, 13) 1,
+    2 list.slash(1, 13) 2,
+    3 list.slash(1, 13) 7,
+    4 list.slash(1, 13) 8,
+    5 1 list.slash(3, 7),
+    6 2 list.slash(3, 5),
+    7 2 list.slash(5, 7),
+    8 3 list.slash(3, 7),
+    9 list.slash(4, 10) 3,
+    10 list.slash(4, 10) 6,
+    11 10 list.slash(3, 7),
+    12 11 list.slash(3, 5),
+    13 11 list.slash(5, 7),
+    14 12 list.slash(3, 7),
+    15 4 list.slash(4, 6),
+    16 5 list.slash(4, 6),
+    17 6 list.slash(4, 6),
+    18 7 list.slash(4, 6),
+    19 8 list.slash(4, 6),
+    20 9 list.slash(4, 6),
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+}
+
 .core-cpu-performance-m1 {
   display: grid;
   grid-template-columns: 20% repeat(5, auto) 20%;
@@ -276,6 +314,42 @@
     gap: var(--border-item-width);
     > [class*="core-side-"] {
       background-color: var(--chip-base-color);
+    }
+  }
+}
+
+.core-cpu-efficiency-a17pro {
+  display: grid;
+  grid-template-columns: 1.7cqw 1cqw 1.7cqw auto 1.7cqw 1cqw 1.7cqw;
+  grid-template-rows: 1.7cqw 1cqw auto 4% repeat(4, 4%) 4% auto 1cqw 1.7cqw;
+  gap: var(--border-item-width);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  $core-item-list:
+    1 list.slash(1, 8) 1,
+    2 list.slash(1, 8) 12,
+    3 1 list.slash(1, 4),
+    4 7 list.slash(1, 4),
+    5 1 list.slash(4, 10),
+    6 7 list.slash(4, 10),
+    7 1 list.slash(10, 13),
+    8 7 list.slash(10, 13),
+    9 list.slash(2, 7) 2,
+    10 list.slash(2, 7) 11,
+    11 2 list.slash(2, 7),
+    12 6 list.slash(2, 7),
+    13 2 list.slash(7, 12),
+    14 6 list.slash(7, 12),
+    15 3 list.slash(3, 11),
+    16 5 list.slash(3, 11),
+    17 4 list.slash(3, 5),
+    18 4 list.slash(9, 11)
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
     }
   }
 }
@@ -515,6 +589,60 @@
     .core-#{$item-order} {
       grid-column: $column;
       grid-row: $row;
+    }
+  }
+}
+
+.core-neural-a17pro {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto 10% 13% repeat(2, 10%) 13% 10% auto;
+  gap: var(--border-item-width);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  .core-1 {
+    background-color: transparent;
+  }
+  $core-item-list:
+    1 list.slash(2, 6) list.slash(3, 7),
+    2 list.slash(1, 4) 2,
+    3 list.slash(4, 7) 2,
+    4 list.slash(1, 4) 7,
+    5 list.slash(4, 7) 7,
+    6 1 list.slash(2, 8),
+    7 6 list.slash(2, 8),
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+  .core-mid {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 13% auto 20% auto 13%;
+    gap: var(--border-item-width);
+    > [class*="core-mid-"] {
+      background-color: var(--chip-base-color);
+    }
+    $core-mid-item-list:
+      1 list.slash(1, 3) 1,
+      2 1 list.slash(1, 5),
+      3 list.slash(1, 3) 4,
+      4 list.slash(4, 6) 1,
+      5 5 list.slash(1, 5),
+      6 list.slash(4, 6) 4,
+      7 list.slash(2, 5) 2,
+      8 list.slash(2, 5) 3
+    ;
+    @each $item-order, $column, $row in $core-mid-item-list {
+      .core-mid-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
     }
   }
 }
@@ -888,33 +1016,6 @@
   }
 }
 
-.core-gpu-m1 {
-  display: grid;
-  grid-template-columns: 20% auto 20%;
-  grid-template-rows: auto repeat(4, 1%) 4.5% repeat(4, 1%) 4.5% repeat(4, 1%) auto;
-  gap: var(--border-item-width);
-  > [class*="core-"] {
-    background-color: var(--chip-base-color);
-  }
-  $core-item-list:
-    1 list.slash(1, 4) 2,
-    2 list.slash(1, 4) 3,
-    3 list.slash(1, 4) 4,
-    4 list.slash(1, 4) 5,
-    5 1 list.slash(6, 12),
-    6 3 list.slash(6, 12),
-    7 list.slash(1, 4) 12,
-    8 list.slash(1, 4) 13,
-    9 list.slash(1, 4) 14,
-    10 list.slash(1, 4) 15,
-  ;
-  @each $item-order, $column, $row in $core-item-list {
-    .core-#{$item-order} {
-      grid-column: $column;
-      grid-row: $row;
-    }
-  }
-}
 .core-gpu-a15 {
   display: grid;
   grid-template-columns:repeat(2, 11%) auto repeat(2, 11%);
@@ -936,6 +1037,78 @@
     10 list.slash(1, 6) 15,
     11 list.slash(2, 5) 1,
     12 list.slash(2, 5) 16
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+}
+
+.core-gpu-a17pro {
+  display: grid;
+  grid-template-columns: 17% 10% repeat(2, auto) 10% 17%;
+  grid-template-rows: 8.3% repeat(2, 1.5%) 22% repeat(4, auto) 3% repeat(12, auto) 3% repeat(4, auto) 22% repeat(2, 1.5%) 8.3%;
+  gap: var(--border-item-width);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  $core-item-list:
+    1 list.slash(1, 7) 1,
+    2 list.slash(1, 7) 2,
+    3 list.slash(1, 7) 3,
+    4 list.slash(1, 7) 30,
+    5 list.slash(1, 7) 29,
+    6 list.slash(1, 7) 28,
+    7 list.slash(1, 4) 4,
+    8 list.slash(4, 7) 4,
+    9 1 list.slash(4, 10),
+    10 6 list.slash(4, 10),
+    11 list.slash(1, 4) 27,
+    12 list.slash(4, 7) 27,
+    13 1 list.slash(22, 28),
+    14 6 list.slash(22, 28),
+    15 2 list.slash(5, 27),
+    16 5 list.slash(5, 27),
+    17 3 list.slash(9, 23),
+    18 4 list.slash(9, 23),
+    19 list.slash(3, 5) 5,
+    20 list.slash(3, 5) 6,
+    21 list.slash(3, 5) 7,
+    22 list.slash(3, 5) 8,
+    23 list.slash(3, 5) 23,
+    24 list.slash(3, 5) 24,
+    25 list.slash(3, 5) 25,
+    26 list.slash(3, 5) 26,
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+}
+
+.core-gpu-m1 {
+  display: grid;
+  grid-template-columns: 20% auto 20%;
+  grid-template-rows: auto repeat(4, 1%) 4.5% repeat(4, 1%) 4.5% repeat(4, 1%) auto;
+  gap: var(--border-item-width);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  $core-item-list:
+    1 list.slash(1, 4) 2,
+    2 list.slash(1, 4) 3,
+    3 list.slash(1, 4) 4,
+    4 list.slash(1, 4) 5,
+    5 1 list.slash(6, 12),
+    6 3 list.slash(6, 12),
+    7 list.slash(1, 4) 12,
+    8 list.slash(1, 4) 13,
+    9 list.slash(1, 4) 14,
+    10 list.slash(1, 4) 15,
   ;
   @each $item-order, $column, $row in $core-item-list {
     .core-#{$item-order} {
@@ -1146,6 +1319,29 @@
     5 3 list.slash(2, 7),
     6 5 list.slash(2, 7),
     7 7 list.slash(2, 7)
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+}
+
+.core-gpu-a17pro-2 {
+  display: grid;
+  grid-template-columns: 27% repeat(3, auto) 27%;
+  grid-template-rows: 25% repeat(8, auto) 25%;
+  gap: var(--border-item-width);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  $core-item-list:
+    1 2 list.slash(1, 6),
+    2 2 list.slash(6, 11),
+    3 3 list.slash(1, 11),
+    4 4 list.slash(1, 6),
+    5 4 list.slash(6, 11),
   ;
   @each $item-order, $column, $row in $core-item-list {
     .core-#{$item-order} {
@@ -2236,6 +2432,55 @@
   }
 }
 
+.core-secure-enclave-a17pro-1 {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 2.5cqw 11cqw 5cqw repeat(2, auto) 5cqw 11cqw 2.5cqw;
+  grid-template-rows: 2.5cqw 7% repeat(16, auto) 7% 2.5cqw;
+  gap: var(--border-item-width);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  $core-item-list:
+    1 4 list.slash(1, 7),
+    2 5 list.slash(1, 7),
+    3 list.slash(4, 6) list.slash(7, 9),
+    4 list.slash(4, 6) list.slash(9, 11),
+    5 list.slash(4, 6) list.slash(11, 13),
+    6 list.slash(4, 6) list.slash(13, 15),
+    7 4 list.slash(15, 21),
+    8 5 list.slash(15, 21),
+    9 list.slash(1, 4) 1,
+    10 1 list.slash(1, 21),
+    11 list.slash(1, 4) 20,
+    12 list.slash(6, 9) 1,
+    13 8 list.slash(1, 21),
+    14 list.slash(6, 9) 20,
+    15 list.slash(2, 4) 2,
+    16 list.slash(6, 8) 2,
+    17 2 list.slash(3, 7),
+    18 7 list.slash(3, 7),
+    19 2 list.slash(7, 9),
+    20 7 list.slash(7, 9),
+    21 2 list.slash(9, 11),
+    22 7 list.slash(9, 11),
+    23 2 list.slash(11, 13),
+    24 7 list.slash(11, 13),
+    25 2 list.slash(13, 15),
+    26 7 list.slash(13, 15),
+    27 2 list.slash(15, 19),
+    28 7 list.slash(15, 19),
+    29 list.slash(2, 4) 19,
+    30 list.slash(6, 8) 19
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+}
+
 .core-secure-enclave-m1-1 {
   height: 100%;
   display: grid;
@@ -2345,6 +2590,57 @@
         grid-column: $column;
         grid-row: $row;
       }
+    }
+  }
+}
+
+.core-secure-enclave-a17pro-2 {
+  height: 100%;
+  display: grid;
+  gap: var(--border-item-width);
+  grid-template-columns: 11% 10% 15% auto 15% 10% 11%;
+  grid-template-rows: 19% 13% repeat(6, auto) 13% 19%;
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  .core-1, .core-2, .core-3, .core-4 {
+    background-color: transparent;
+  }
+  $core-item-list:
+    1 1 list.slash(1, 11),
+    2 7 list.slash(1, 11),
+    3 list.slash(2, 7) 1,
+    4 list.slash(2, 7) 10,
+    5 2 list.slash(1, 11),
+    6 6 list.slash(1, 11),
+    7 list.slash(3, 6) 2,
+    8 list.slash(3, 6) 9,
+    9 3 list.slash(3, 9),
+    10 5 list.slash(3, 9)
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+  .core-side-top {
+    height: 100%;
+    display: grid;
+    gap: var(--border-item-width);
+    grid-template-columns: 24% repeat(10, auto) 24%;
+    > [class*="core-side-top-"] {
+      background-color: var(--chip-base-color);
+    }
+  }
+  .core-side-right {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--border-item-width);
+    > [class*="core-side-right-"] {
+      flex: 1;
+      background-color: var(--chip-base-color);
     }
   }
 }
@@ -2486,6 +2782,34 @@
   }
 }
 
+.core-secure-enclave-a17pro-3 {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 17% 8% 12% repeat(5, auto) 12% 8% 17%;
+  grid-template-rows: 33% repeat(4, auto) 33%;
+  gap: var(--border-item-width);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  $core-item-list:
+    1 list.slash(1, 4) 1,
+    2 list.slash(9, 12) 1,
+    3 list.slash(1, 4) 6,
+    4 list.slash(9, 12) 6,
+    5 2 list.slash(2, 4),
+    6 10 list.slash(2, 4),
+    7 2 list.slash(4, 6),
+    8 10 list.slash(4, 6),
+    9 list.slash(3, 10) list.slash(2, 6)
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+}
+
 .core-secure-enclave-m1-3 {
   height: 100%;
   display: grid;
@@ -2578,6 +2902,35 @@
   }
 }
 
+.core-secure-enclave-a17pro-4 {
+  height: 100%;
+  display: grid;
+  grid-template-columns: auto repeat(4, 0.6cqw) auto;
+  grid-template-rows: auto repeat(6, 0.6cqw) auto;
+  gap: var(--border-item-width);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  $core-item-list:
+    1 list.slash(1, 7) 1,
+    2 list.slash(1, 7) 8,
+    3 list.slash(1, 3) 2,
+    4 2 list.slash(2, 8),
+    5 list.slash(1, 3) 7,
+    6 3 list.slash(2, 8),
+    7 4 list.slash(2, 8),
+    8 list.slash(5, 7) 2,
+    9 5 list.slash(2, 8),
+    10 list.slash(5, 7) 7
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+}
+
 .core-secure-enclave-m1-4 {
   height: 100%;
   display: grid;
@@ -2650,6 +3003,26 @@
   }
 }
 
+.core-secure-enclave-a17pro-5 {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: var(--border-item-width);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  $core-item-list:
+    1 list.slash(1, 9) 1,
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+}
+
 .core-secure-enclave-m1-5 {
   height: 100%;
   display: grid;
@@ -2711,6 +3084,27 @@
   }
 }
 
+.core-secure-enclave-a17pro-6 {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: var(--border-item-width);
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  $core-item-list:
+    1 1 list.slash(1, 7),
+    2 list.slash(3, 5) list.slash(1, 7)
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+}
+
 .core-secure-enclave-m1-6 {
   height: 100%;
   display: grid;
@@ -2730,6 +3124,44 @@
     .core-#{$item-order} {
       grid-column: $column;
       grid-row: $row;
+    }
+  }
+}
+
+.core-secure-enclave-a17pro-7 {
+  height: 100%;
+  display: grid;
+  gap: var(--border-item-width);
+  grid-template-columns: 14% 19% repeat(3, auto) 19% 14%;
+  grid-template-rows: 30% repeat(2, auto) 30%;
+  > [class*="core-"] {
+    background-color: var(--chip-base-color);
+  }
+  .core-1, .core-2 {
+    background-color: transparent;
+  }
+  $core-item-list:
+    1 list.slash(1, 8) 1,
+    2 list.slash(1, 8) 4,
+    3 1 list.slash(1, 5),
+    4 7 list.slash(1, 5),
+    5 3 list.slash(2, 4),
+    6 4 list.slash(2, 4),
+    7 5 list.slash(2, 4),
+  ;
+  @each $item-order, $column, $row in $core-item-list {
+    .core-#{$item-order} {
+      grid-column: $column;
+      grid-row: $row;
+    }
+  }
+  .core-side {
+    height: 100%;
+    display: grid;
+    gap: var(--border-item-width);
+    grid-template-columns: repeat(4, 1fr);
+    > [class*="core-side-"] {
+      background-color: var(--chip-base-color);
     }
   }
 }
