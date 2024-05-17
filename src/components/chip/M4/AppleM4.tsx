@@ -100,48 +100,6 @@ export const AppleM4:FC = () => {
     )
   }
 
-  const LeftBottom:FC = () => {
-    const coreCount = 2;
-    let coreCountArray:string[] = [];
-    for (let index = 0; index < coreCount; index++) {
-      coreCountArray.push("a");
-    }
-    const CpuCore:FC = () => {
-      const coreGridCount = 25;
-      let coreGridCountArray:number[] = [];
-      for (let index = 1; index <= coreGridCount; index++) {
-        coreGridCountArray.push(index);
-      }
-      const coreMidGridCount = 11;
-      let coreMidGridCountArray:number[] = [];
-      for (let index = 1; index <= coreMidGridCount; index++) {
-        coreMidGridCountArray.push(index);
-      }
-      return (
-        <div className="core-bottom-m2-1">
-          {coreGridCountArray.map((item, index) => (
-            <div className={`core-${item}`} key={`leftBotCore${index}`}>
-              {item === 1 ? (
-                <div className="core-mid">
-                  {coreMidGridCountArray.map((item1, index1) => (
-                    <div className={`core-mid-${item1}`} key={`leftBotCoreMid${index1}`}></div>
-                  ))}
-                </div>
-              ) : ""}
-            </div>
-          ))}
-        </div>
-      )
-    }
-    return (
-      <div className="bottom-1">
-        {coreCountArray.map((_item, index) => (
-          <CpuCore key={`leftBot${index}`} />
-        ))}
-      </div>
-    )
-  }
-
   const Gpu:FC = () => {
     const coreCount = 10;
     let coreCountArray:string[] = [];
@@ -208,35 +166,6 @@ export const AppleM4:FC = () => {
       <div className="gpu-2">
         {coreCountArray.map((_item, index) => (
           <Core key={`gpu${index}`} />
-        ))}
-      </div>
-    )
-  }
-
-  const NeuralEngine2:FC = () => {
-    const coreCount = 16;
-    let coreCountArray:string[] = [];
-    for (let index = 0; index < coreCount; index++) {
-      coreCountArray.push("a");
-    }
-    const Core:FC = () => {
-      const coreGridCount = 12;
-      let coreGridCountArray:number[] = [];
-      for (let index = 1; index <= coreGridCount; index++) {
-        coreGridCountArray.push(index);
-      }
-      return (
-        <div className="core-neural-m2-2">
-          {coreGridCountArray.map((item, index) => (
-            <div className={`core-${item}`} key={`rightNeuralCore${index}`}></div>
-          ))}
-        </div>
-      )
-    }
-    return (
-      <div className="neural-2">
-        {coreCountArray.map((_item, index) => (
-          <Core key={`rightNeural${index}`} />
         ))}
       </div>
     )

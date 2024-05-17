@@ -171,67 +171,6 @@ export const AppleA17Pro:FC = () => {
     )
   }
 
-  const Media1:FC = () => {
-    const Core:FC = () => {
-      const coreGridCount = 37;
-      let coreGridCountArray:number[] = [];
-      for (let index = 1; index <= coreGridCount; index++) {
-        coreGridCountArray.push(index);
-      }
-      const coreSideGridCount = 43;
-      let coreSideGridCountArray:number[] = [];
-      for (let index = 1; index <= coreSideGridCount; index++) {
-        coreSideGridCountArray.push(index);
-      }
-      return (
-        <div className="core-media-a15-1">
-          {coreGridCountArray.map((item, index) => (
-            <div className={`core-${item}`} key={`secureCore${index}`}>
-              {item === 1 ? (
-                <div className="core-side">
-                  {coreSideGridCountArray.map((item1, index1) => (
-                    <div className={`core-side-${item1}`} key={`secureCore${index1}`}></div>
-                  ))}
-                </div>
-              ) : ""}
-            </div>
-          ))}
-        </div>
-      )
-    }
-    return (
-      <div className="media">
-        <Core />
-      </div>
-    )
-  }
-
-  const Media2:FC = () => {
-    const Core:FC = () => {
-      const coreGridCount = 56;
-      let coreGridCountArray:number[] = [];
-      for (let index = 1; index <= coreGridCount; index++) {
-        coreGridCountArray.push(index);
-      }
-      return (
-        <div className="core-media-a15-2">
-          {coreGridCountArray.map((item, index) => (
-            <div className={`core-${item}`} key={`secureCore${index}`}>
-              {item === 1 ? (
-                <div className="core-side"></div>
-              ) : ""}
-            </div>
-          ))}
-        </div>
-      )
-    }
-    return (
-      <div className="media">
-        <Core />
-      </div>
-    )
-  }
-
   const SecureEnclave1:FC = () => {
     const Core:FC = () => {
       const coreGridCount = 62;
