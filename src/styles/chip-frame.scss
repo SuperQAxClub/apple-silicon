@@ -716,33 +716,23 @@
     gap: var(--border-separator-width);
     grid-template-columns: 45% auto;
     grid-template-rows: 16% 30% auto repeat(5, 7%);
-    .chip-item-1 {
-      grid-column: 1;
-      grid-row: 1;
-    }
-    .chip-item-2 {
-      grid-column: 1;
-      grid-row: 2/4;
-    }
-    .chip-item-3 {
-      grid-column: 1;
-      grid-row: 4/6;
-    }
-    .chip-item-4 {
-      grid-column: 1;
-      grid-row: 6/8
-    }
-    .chip-item-5 {
-      grid-column: 1;
-      grid-row: 8
-    }
-    .chip-item-6 {
-      grid-column: 2;
-      grid-row: 1/3;
+    $core-item-list:
+      1 1 1,
+      2 1 list.slash(2, 4),
+      3 1 list.slash(4, 6),
+      4 1 list.slash(6, 8),
+      5 1 8,
+      6 2 list.slash(1, 3),
+      7 2 list.slash(3, 5),
+      8 2 list.slash(5, 9)
+    ;
+    @each $item-order, $column, $row in $core-item-list {
+      .chip-item-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
     }
     .chip-item-7 {
-      grid-column: 2;
-      grid-row: 3/5;
       display: flex;
       gap: var(--border-separator-width);
       .item-a-1 {
@@ -759,8 +749,6 @@
       }
     }
     .chip-item-8 {
-      grid-column: 2;
-      grid-row: 5/9;
       display: flex;
       gap: var(--border-separator-width);
       .item-a-left {
@@ -811,42 +799,23 @@
     gap: var(--border-separator-width);
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 14% 28% 14% repeat(2, auto);
-    .chip-item-1 {
-      grid-column: 1/3;
-      grid-row: 1;
+    $core-item-list:
+      1 list.slash(1, 3) 1,
+      2 list.slash(1, 3) 2,
+      3 list.slash(1, 3) 3,
+      4 list.slash(3, 6) list.slash(1, 4),
+      5 1 list.slash(4, 6),
+      6 list.slash(2, 4) list.slash(4, 6),
+      7 4 4,
+      8 4 5,
+      9 5 list.slash(4, 6)
+    ;
+    @each $item-order, $column, $row in $core-item-list {
+      .chip-item-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
     }
-    .chip-item-2 {
-      grid-column: 1/3;
-      grid-row: 2;
-    }
-    .chip-item-3 {
-      grid-column: 1/3;
-      grid-row: 3;
-    }
-    .chip-item-4 {
-      grid-column: 3/6;
-      grid-row: 1/4;
-    }
-    .chip-item-5 {
-      grid-column: 1;
-      grid-row: 4/6;
-    }
-    .chip-item-6 {
-      grid-column: 2/4;
-      grid-row: 4/6;
-    }
-    .chip-item-7 {
-      grid-column: 4;
-      grid-row: 4;
-    }
-    .chip-item-8 {
-      grid-column: 4;
-      grid-row: 5;
-    }
-    .chip-item-9 {
-      grid-column: 5;
-      grid-row: 4/6;
-    } 
   }
   .left-name {
     .text {
@@ -928,56 +897,30 @@
     gap: var(--border-separator-width);
     grid-template-columns: repeat(4, 20%) auto;
     grid-template-rows: 9.8% 19% 7.6% 12.4% 12.4% auto 4% 26cqw;
-    .chip-item-1 {
-      grid-column: 1/3;
-      grid-row: 1;
-    }
-    .chip-item-2 {
-      grid-column: 1/3;
-      grid-row: 2;
-    }
-    .chip-item-3 {
-      grid-column: 1/3;
-      grid-row: 3;
-    }
-    .chip-item-4 {
-      grid-column: 1;
-      grid-row: 4/6;
-    }
-    .chip-item-5 {
-      grid-column: 2;
-      grid-row: 4;
-    }
-    .chip-item-6 {
-      grid-column: 2;
-      grid-row: 5;
-    }
-    .chip-item-7 {
-      grid-column: 1/3;
-      grid-row: 6/8;
-    }
-    .chip-item-8 {
-      grid-column: 3/5;
-      grid-row: 1/7;
-    }
-    .chip-item-9 {
-      grid-column: 3/5;
-      grid-row: 7;
+    $core-item-list:
+      1 list.slash(1, 3) 1,
+      2 list.slash(1, 3) 2,
+      3 list.slash(1, 3) 3,
+      4 1 list.slash(4, 6),
+      5 2 4,
+      6 2 5,
+      7 list.slash(1, 3) list.slash(6, 8),
+      8 list.slash(3, 5) list.slash(1, 7),
+      9 list.slash(3, 5) 7,
+      10 5 list.slash(1, 8),
+      11 list.slash(1, 5) 8,
+      12 5 8
+    ;
+    @each $item-order, $column, $row in $core-item-list {
+      .chip-item-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
     }
     .chip-item-10 {
-      grid-column: 5;
-      grid-row: 1/8;
       display: grid;
       grid-template-rows: 14% 14% auto 12% 12% 26cqw;
       gap: var(--border-separator-width);
-    }
-    .chip-item-11 {
-      grid-column: 1/5;
-      grid-row: 8;
-    }
-    .chip-item-12 {
-      grid-column: 5;
-      grid-row: 8;
     }
   }
   // Chip grid
@@ -1364,5 +1307,79 @@
     .core-bottom-m2-2 {
       grid-template-columns: repeat(5, auto);
     }
+  }
+}
+
+.frame-m4 {
+  --ratio-width: 1;
+  --ratio-height: 1;
+  --background: linear-gradient(to top right, #cdd68d, #7cc3da, #4e8cdb, #2c1e9d, #360660);
+  .chip-frame {
+    background: var(--background);
+    gap: var(--border-separator-width);
+    grid-template-columns: repeat(2, 0.9fr) repeat(2, 1.1fr);
+    grid-template-rows: 15% auto 13% 10% 4% 15% 5%;
+    // > [class*="chip-item-"] {
+    //   flex: 1;
+    //   background-color: var(--chip-base-color);
+    // }
+    $core-item-list:
+      1 list.slash(1, 3) 1,
+      2 list.slash(1, 3) list.slash(2, 4),
+      3 list.slash(3, 5) list.slash(1, 3),
+      4 list.slash(3, 5) 3,
+      5 list.slash(1, 3) list.slash(4, 6),
+      6 list.slash(1, 3) 6,
+      7 list.slash(1, 3) 7,
+      8 3 4,
+      9 3 list.slash(5, 7),
+      10 3 7,
+      11 4 list.slash(4, 8)
+    ;
+    @each $item-order, $column, $row in $core-item-list {
+      .chip-item-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
+    }
+  }
+  .left-name {
+    .text {
+      padding-top: 2.5cqw;
+      padding-left: 2.2cqw;
+    }
+  }
+  .cpu-performance {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .cpu-efficiency {
+    grid-template-columns: repeat(3, auto);
+  }
+  .neural-1 {
+    grid-template-columns: repeat(8, auto);
+  }
+  .bottom-1 {
+    grid-template-columns: repeat(2, auto);
+  }
+  .gpu {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .gpu-2 {
+    gap: var(--border-item-width)!important;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .neural-2 {
+    grid-template-columns: repeat(8, 1fr);
+  }
+  .bottom-2 {
+    gap: var(--border-item-width)!important;
+  }
+  .media-container {
+    gap: var(--border-separator-width)!important;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .secure-enclave-container {
+    gap: var(--border-separator-width)!important;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
