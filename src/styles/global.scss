@@ -93,6 +93,7 @@ $grad-list:
   --border-separator-width: 5px;
   --border-item-width: 1px;
   --a-border-separator-width: 8px;
+  --a-border-separator-thin-width: 4px;
   --a-border-item-width: 2px;
   --chip-overlay: rgba(0, 0, 0, 0.1);
 }
@@ -394,8 +395,9 @@ $grid-list: 'fullhd' 'fullhd' 'screen and (max-width: 2000px)',
   .chip-frame {
     --border-separator-width: 3px;
     --border-item-width: 1px;
-    --a-border-separator-width: 5px;
-    --a-border-item-width: 2px;
+    --a-border-separator-width: 7px;
+    --a-border-separator-thin-width: 3px;
+    --a-border-item-width: 1.5px;
   }
 }
 @container (max-width: 500px) {
@@ -403,7 +405,8 @@ $grid-list: 'fullhd' 'fullhd' 'screen and (max-width: 2000px)',
     --border-separator-width: 2px;
     --border-item-width: 1px;
     --a-border-separator-width: 4px;
-    --a-border-item-width: 1.5px;
+    --a-border-separator-thin-width: 2px;
+    --a-border-item-width: 1px;
   }
 }
 @container (max-width: 400px) {
@@ -411,6 +414,7 @@ $grid-list: 'fullhd' 'fullhd' 'screen and (max-width: 2000px)',
     --border-separator-width: 1px;
     --border-item-width: 0.5px;
     --a-border-separator-width: 3px;
-    --a-border-item-width: 1px;
+    --a-border-separator-thin-width: 1px;
+    --a-border-item-width: 0.5px;
   }
 }

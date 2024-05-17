@@ -19,6 +19,7 @@ export const MainPage:FC = () => {
       <br /><a href="#/m3">Apple M3</a>
       <br /><a href="#/m3pro">Apple M3 Pro</a>
       <br /><a href="#/m3max">Apple M3 Max</a>
+      <br /><a href="#/m4">Apple M4</a>
     </div>
   )
 }

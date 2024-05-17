@@ -42,7 +42,8 @@ $media-list: 'desktop' 'screen and (min-width: 1000px)',
   .media-3,
   .media-4,
   .secure-enclave,
-  .secure-enclave-container {
+  .secure-enclave-container,
+  .media-container {
     @content;
   }
 }
