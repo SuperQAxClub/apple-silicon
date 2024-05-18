@@ -236,7 +236,7 @@
     background: var(--background);
     gap: var(--a-border-separator-width);
     grid-template-columns: repeat(2, 1fr) 0.74fr 1.26fr;
-    grid-template-rows: 13cqh 32cqh 13cqh 10cqh auto;
+    grid-template-rows: 13.5% 35% 14% 10% auto;
     // > [class*="chip-item-"] {
     //   background-color: var(--chip-base-color);
     // }
@@ -309,7 +309,7 @@
   .secure-enclave-container {
     gap: var(--a-border-separator-width)!important;
     grid-template-columns: 60% auto;
-    grid-template-rows: 40% auto;
+    grid-template-rows: repeat(2, 1fr);
     $container-item-list:
       1 1 list.slash(1, 3),
       2 2 1,
@@ -688,7 +688,7 @@
     .left-name {
       .text {
         font-size: 6.7cqw;
-        padding-top: 48cqh;
+        padding-top: 111.5cqw;
         padding-left: 2.8cqw;
         .apple-logo {
           margin-right: 0.7cqw;
@@ -990,7 +990,7 @@
     .left-name {
       .text {
         font-size: 6.7cqw;
-        padding-top: 48cqh;
+        padding-top: 111.5cqw;
         padding-left: 3cqw;
         .apple-logo {
           margin-right: 0.7cqw;
