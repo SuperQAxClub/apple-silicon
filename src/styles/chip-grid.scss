@@ -13,11 +13,13 @@
     font-size: 10cqw;
     background: var(--background);
     box-sizing: border-box;
-    width: 100cqw;
-    height: 100cqh;
+    width: 100%;
+    height: 100%;
     background-clip: text;
     color:transparent;
     pointer-events: none;
+    display: grid;
+    grid-template-rows: auto 5% auto;
     .apple-logo {
       line-height: 1;
       font-size: 1.4em;
