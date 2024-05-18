@@ -7,8 +7,12 @@ export const AppleM2Ultra:FC = () => {
     return (
       <div className="left-name">
         <div className="text">
-          <span className="apple-logo"></span>
-          <span className="chip-name">M2 ULTRA</span>
+          <div className="text-placeholder"></div>
+          <div className="text-string">
+            <span className="apple-logo"></span>
+            <span className="chip-name">M2 ULTRA</span>
+          </div>
+          <div className="text-placeholder"></div>
         </div>
       </div>
     )

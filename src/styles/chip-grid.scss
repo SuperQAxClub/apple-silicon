@@ -18,6 +18,8 @@
     background-clip: text;
     color:transparent;
     pointer-events: none;
+    display: grid;
+    grid-template-rows: auto 5% auto;
     .apple-logo {
       line-height: 1;
       font-size: 1.4em;
