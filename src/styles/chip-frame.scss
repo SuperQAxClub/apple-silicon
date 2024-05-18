@@ -690,6 +690,8 @@
         font-size: 6.7cqw;
         padding-top: 2cqw;
         padding-left: 2.8cqw;
+        display: grid;
+        grid-template-rows: auto 5% auto;
         .apple-logo {
           margin-right: 0.7cqw;
         }
@@ -992,6 +994,8 @@
         font-size: 6.7cqw;
         padding-top: 2cqw;
         padding-left: 2.8cqw;
+        display: grid;
+        grid-template-rows: auto 5% auto;
         .apple-logo {
           margin-right: 0.7cqw;
         }
