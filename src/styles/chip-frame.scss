@@ -1,6 +1,75 @@
 @use 'common';
 @use 'sass:list';
 
+.frame-a12x, .frame-a12z {
+  --ratio-width: 1;
+  --ratio-height: 1;
+  --background: linear-gradient(to top right, #fb396d, transparent, #01326c), linear-gradient(to top left, #f2bf28, transparent, #fb396d), #8cd3e5;
+  .chip-frame {
+    background: var(--background);
+    gap: var(--border-separator-width);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 16% 34% 20% 6% auto;
+    $frame-item-list:
+      1 list.slash(1, 3) 1,
+      2 list.slash(1, 3) 2,
+      3 list.slash(3, 5) list.slash(1, 3),
+      4 list.slash(1, 3) 3,
+      5 list.slash(1, 3) list.slash(4, 6),
+      6 3 list.slash(3, 5),
+      7 4 list.slash(3, 5),
+      8 list.slash(3, 5) 5,
+    ;
+    @each $item-order, $column, $row in $frame-item-list {
+      .chip-item-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
+    }
+  }
+  .left-name {
+    .text {
+      padding-top: 2.9cqw;
+      padding-left: 2.2cqw;
+      font-size: 10.5cqw;
+      .apple-logo {
+        margin-right: 0;
+      }
+      .chip-name {
+        font-size: 1.15em;
+      }
+    }
+  }
+  .cpu-performance, .cpu-efficiency {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .gpu, .neural-1 {
+    grid-template-columns: repeat(8, 1fr);
+  }
+  .neural-1 {
+    gap: calc(var(--border-separator-width) / 1.5)!important
+  }
+  .secure-enclave-container {
+    grid-template-columns: repeat(4, 1fr);
+    $container-item-list:
+      1 list.slash(1, 5) list.slash(1, 3),
+      2 list.slash(1, 3) list.slash(3, 5),
+      3 3 3,
+      4 4 3,
+      5 list.slash(3, 5) 4
+    ;
+    @each $item-order, $column, $row in $container-item-list {
+      .container-#{$item-order} {
+        grid-column: $column;
+        grid-row: $row;
+      }
+    }
+  }
+}
+.frame-a12z {
+  --background: linear-gradient(115deg, #e01746, #b3095f, #2973ba, #9b2c90, #522988);
+}
+
 .frame-a14 {
   --ratio-width: 1;
   --ratio-height: 1;

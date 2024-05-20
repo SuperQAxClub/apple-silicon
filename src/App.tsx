@@ -16,12 +16,16 @@ import { AppleA14 } from './components/chip/AFamily/AppleA14'
 import { AppleA16 } from './components/chip/AFamily/AppleA16'
 import { AppleA17Pro } from './components/chip/AFamily/AppleA17Pro'
 import { AppleM4 } from './components/chip/M4/AppleM4'
+import { AppleA12X } from './components/chip/AFamily/AppleA12X'
+import { AppleA12Z } from './components/chip/AFamily/AppleA12Z'
 
 function App() {
   return (
     <HashRouter>
       <Routes>
         <Route path={`/`} element={<MainPage />} />
+        <Route path={`/a12x`} element={<AppleA12X />} />
+        <Route path={`/a12z`} element={<AppleA12Z />} />
         <Route path={`/a14`} element={<AppleA14 />} />
         <Route path={`/a15`} element={<AppleA15 />} />
         <Route path={`/a16`} element={<AppleA16 />} />
