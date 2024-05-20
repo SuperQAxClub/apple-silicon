@@ -660,7 +660,7 @@
   background: var(--background);
 }
 .frame-item-m1-max {
-  height: 100%;
+  height: 100cqh;
   .chip-frame {
     gap: var(--border-separator-width);
     grid-template-columns: repeat(4, 20%) auto;
@@ -963,7 +963,7 @@
 }
 
 .frame-item-m2-max {
-  height: 100%;
+  height: 100cqh;
   .chip-frame {
     gap: var(--border-separator-width);
     grid-template-columns: repeat(4, 20%) auto;
@@ -1265,7 +1265,7 @@
   background: var(--background);
 }
 .frame-item-m3-max {
-  height: 100%;
+  height: 100cqh;
   .chip-frame {
     gap: var(--border-separator-width);
     grid-template-columns: repeat(8, 1fr);
