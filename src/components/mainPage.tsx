@@ -4,8 +4,12 @@ export const MainPage:FC = () => {
   return (
     <div>
       Apple Silicon on React (under construction)
+      <br /><a href="#/a10">Apple A10 Fusion</a>
+      <br /><a href="#/a11">Apple A11 Bionic</a>
+      <br /><a href="#/a12">Apple A12 Bionic</a>
       <br /><a href="#/a12x">Apple A12X Bionic</a>
       <br /><a href="#/a12z">Apple A12Z Bionic</a>
+      <br /><a href="#/a13">Apple A13 Bionic</a>
       <br /><a href="#/a14">Apple A14 Bionic</a>
       <br /><a href="#/a15">Apple A15 Bionic</a>
       <br /><a href="#/a16">Apple A16 Bionic</a>
